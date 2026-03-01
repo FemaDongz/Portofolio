@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Fema Andara Haqi - Final Fixed</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           RESET & ROOT VARIABLES
+           ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        :root {
+            --scale: min(1vw, 1vh);
+            --pad: clamp(16px, 4.5vw, 30px);
+            --radius-card: clamp(16px, 4vw, 25px);
+            --nav-h: clamp(52px, 14vw, 66px);
+            --nav-br: clamp(14px, 3.5vw, 18px);
+        }
+
+        /* --- 1. BODY --- */
+        body {
+            background-color: #fff; margin: 0;
+            height: 100%; min-height: 100svh; width: 100vw;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Oswald', sans-serif; overflow: hidden;
+        }
+        html { height: 100%; }
+
+        /* --- 2. MAIN CONTAINER --- */
+        .main-container {
+            position: relative;
+            width: 98vw; height: 98svh;
+            background-color: #050505;
+            border-radius: clamp(14px, 3vw, 20px);
+            overflow: hidden; display: flex;
+            justify-content: center; align-items: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            transform: scale(0);
+            animation: containerOpen 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: width 1.2s cubic-bezier(0.7,0,0.3,1),
+                        height 1.2s cubic-bezier(0.7,0,0.3,1),
+                        border-radius 1.2s cubic-bezier(0.7,0,0.3,1);
+        }
+        @keyframes containerOpen {
+            0%   { transform: scale(0); border-radius: 150px; opacity: 0; }
+            100% { transform: scale(1); border-radius: clamp(14px,3vw,20px); opacity: 1; }
+        }
+        .main-container.expand-black { width: 110vw; height: 110svh; border-radius: 0; margin: 0; }
+
+        .backdrop {
+            position: absolute; inset: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 50%, #0000 0, #0000 20%, #111111aa 50%);
+            background-size: 4px 4px;
+            background-image: radial-gradient(#333 1px, transparent 1px);
+            z-index: 0; opacity: 0.5; transition: opacity 1s ease;
+        }
+        .vignette {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 2;
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 100%);
+            transition: opacity 1s ease;
+        }
+
+        /* --- 3. CROSS BAR --- */
+        .cross-container {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1; pointer-events: none;
+            transition: opacity 1s ease, filter 1s ease;
+        }
+        .cross-arm {
+            position: absolute; width: 150vw;
+            height: clamp(48px, 10vw, 70px);
+            background: #ffffff; display: flex; align-items: center;
+            overflow: hidden; opacity: 0;
+            box-shadow: 0 0 50px rgba(255,255,255,0.4);
+            mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+        }
+        .arm-1 { transform: rotate(-30deg) translateX(-100%); animation: slideInLeft 1.5s cubic-bezier(0.2,1,0.3,1) forwards; animation-delay: 2.2s; }
+        .arm-2 { transform: rotate(30deg) translateX(100%); animation: slideInRight 1.5s cubic-bezier(0.2,1,0.3,1) forwards; animation-delay: 2.2s; }
+        @keyframes slideInLeft { 0% { opacity:0; transform:rotate(-30deg) translateX(-50%) scaleX(0.8); } 100% { opacity:1; transform:rotate(-30deg) translateX(0) scaleX(1); } }
+        @keyframes slideInRight { 0% { opacity:0; transform:rotate(30deg) translateX(50%) scaleX(0.8); } 100% { opacity:1; transform:rotate(30deg) translateX(0) scaleX(1); } }
+        .scrolling-text {
+            white-space: nowrap;
+            font-size: clamp(18px, 4.5vw, 30px);
+            font-weight: 700; color: #000000;
+            letter-spacing: 5px;
+            animation: scrollText 30s linear infinite;
+        }
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- 4. CARD UTAMA --- */
+        .card {
+            background-color: #ffffff;
+            /* Lebih besar agar proporsional di semua HP */
+            width: clamp(270px, 68vw, 380px);
+            height: clamp(380px, 54svh, 600px);
+            border-radius: var(--radius-card);
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center;
+            z-index: 10;
+            box-shadow: 0 0 60px rgba(255,255,255,0.5);
+            transform: scale(0);
+            animation: cardExpand 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+            animation-delay: 1.0s;
+            transition: width 1.2s cubic-bezier(0.7,0,0.3,1),
+                        height 1.2s cubic-bezier(0.7,0,0.3,1),
+                        border-radius 1.2s cubic-bezier(0.7,0,0.3,1),
+                        transform 1.2s cubic-bezier(0.7,0,0.3,1),
+                        max-width 1.2s ease, max-height 1.2s ease,
+                        box-shadow 0.8s ease, background-color 0.8s ease;
+        }
+        @keyframes cardExpand {
+            0%   { transform: scale(0); border-radius: 120px; }
+            100% { transform: scale(1); border-radius: var(--radius-card); }
+        }
+        .card.expand-white {
+            width: 98vw; height: 98svh;
+            max-width: 100vw; max-height: 100svh;
+            border-radius: clamp(14px, 3vw, 20px);
+            transform: scale(1);
+            box-shadow: 0 0 0 rgba(255,255,255,0);
+        }
+        .card.theme-maroon { background-color: #4A0E17 !important; }
+
+        /* --- CARD INTRO CONTENT --- */
+        .card-content-wrapper {
+            position: absolute; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            transition: all 0.8s ease;
+        }
+        .header-section {
+            text-align: center;
+            margin-top: clamp(10%, 15%, 18%);
+            padding: 0 clamp(10px, 3vw, 20px);
+            z-index: 11; width: 100%;
+        }
+        .subtitle-top {
+            font-family: 'Montserrat', sans-serif; font-weight: 600;
+            font-size: clamp(9px, 2.8vw, 12px);
+            letter-spacing: 2px; color: #111; margin-bottom: 5px; opacity: 0;
+        }
+        .title-main {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(34px, 11vw, 56px);
+            font-weight: 700; line-height: 1.1; margin: 0; color: #000;
+            transform: scaleY(1.15); opacity: 0;
+        }
+        .divider-container {
+            display: flex; align-items: center; justify-content: center;
+            margin: clamp(10px, 2.5vw, 16px) 0;
+            width: 100%; padding: 0 5%; opacity: 0;
+            animation: blurIn 0.5s ease forwards; animation-delay: 2.7s;
+        }
+        .line-wrapper { flex-grow: 1; height: 1.5px; display: flex; }
+        .line-wrapper.left { justify-content: flex-end; }
+        .line-wrapper.right { justify-content: flex-start; }
+        .line-inner { height: 100%; background-color: #000; width: 0; animation: loadingLine 1.5s cubic-bezier(0.25,1,0.5,1) forwards; animation-delay: 3.0s; }
+        .divider-text {
+            font-family: 'Oswald', sans-serif; margin: 0 10px;
+            font-weight: 700; font-size: clamp(13px, 3.5vw, 17px); letter-spacing: 2px;
+        }
+        .subtitle-bottom {
+            font-family: 'Montserrat', sans-serif; font-weight: 400;
+            font-size: clamp(8px, 2.2vw, 11px); color: #888; margin-top: 5px; opacity: 0;
+        }
+        .visual-section {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 55%;
+            display: flex; justify-content: center; align-items: flex-end; pointer-events: none;
+        }
+        .outline-text-container { position: absolute; top: 0; width: 100%; text-align: center; z-index: 1; scale: 1.3; opacity: 0; }
+        .outline-text {
+            font-family: 'Oswald', sans-serif; font-weight: 500;
+            font-size: clamp(52px, 16vw, 105px);
+            color: transparent; -webkit-text-stroke: 1px #d4d4d4;
+            margin: 0; line-height: 0.9; letter-spacing: 2px;
+        }
+        .bottom-bg { position: absolute; bottom: 0; width: 90%; height: 30%; object-fit: cover; border-radius: 20px 20px 0 0; z-index: 2; opacity: 0; }
+        .person-image { position: absolute; bottom: -1vh; height: 100%; object-fit: contain; z-index: 3; scale: 1.3; opacity: 0; }
+
+        @keyframes blurIn { 0% { opacity:0; filter:blur(15px); transform:translateY(10px); } 100% { opacity:1; filter:blur(0); transform:translateY(0); } }
+        .blur-anim { animation: blurIn 1.2s ease forwards; }
+        .delay-30 { animation-delay: 4.5s; }
+        .delay-32 { animation-delay: 4.7s; }
+        .delay-34 { animation-delay: 4.9s; }
+        @keyframes loadingLine { 0% { width: 0%; } 100% { width: 100%; } }
+
+        /* --- 5. LOADER --- */
+        .loader-wrapper, .loading-text-container, .deco-top-left {
+            position: absolute; z-index: 100; opacity: 0;
+            transition: opacity 0.8s ease, filter 0.8s ease;
+        }
+        .loader-wrapper {
+            bottom: clamp(20px, 14vh, 50px);
+            left: clamp(16px, 4vw, 40px);
+            animation: blurIn 1s ease forwards 5.0s;
+            transform: scale(0.1);
+            transform-origin: bottom left;
+            /* Skala loader menggunakan container scale, bukan pixel absolut */
+        }
+        .loader {
+            /* Ukuran loader disesuaikan agar setelah scale(0.1→1) tidak overflow */
+            width: clamp(68px, min(30vw, 13svh), 110px);
+            height: clamp(68px, min(20vw, 13svh), 110px);
+            position: relative;
+        }
+        .box1, .box2, .box3 {
+            border: clamp(7px, min(1.8vw, 1.6svh), 14px) solid #f5f5f5;
+            box-sizing: border-box; position: absolute; display: block;
+        }
+        /* Proporsi box mengikuti ukuran loader (rasio tetap 112:48:64) */
+        .box1 { width: 112px; height: 48px; margin-top: 64px; animation: abox1 4s 1s forwards ease-in-out infinite; }
+        .box2 { width: 48px; height: 48px; margin-top: 0px; animation: abox2 4s 1s forwards ease-in-out infinite; }
+        .box3 { width: 48px; height: 48px; margin-top: 0px; margin-left: 64px; animation: abox3 4s 1s forwards ease-in-out infinite; }
+        @keyframes abox1 { 0%, 100% { width: 112px; height: 48px; margin-top: 64px; margin-left: 0px; } 12.5%, 25%, 37.5%, 50%, 62.5% { width: 48px; height: 48px; margin-top: 64px; margin-left: 0px; } 75% { width: 48px; height: 112px; margin-top: 0px; margin-left: 0px; } 87.5% { width: 48px; height: 48px; margin-top: 0px; margin-left: 0px; } }
+        @keyframes abox2 { 0%, 12.5%, 25%, 37.5% { width: 48px; height: 48px; margin-top: 0px; margin-left: 0px; } 50% { width: 112px; height: 48px; margin-top: 0px; margin-left: 0px; } 62.5%, 75%, 87.5%, 100% { width: 48px; height: 48px; margin-top: 0px; margin-left: 64px; } }
+        @keyframes abox3 { 0%, 12.5% { width: 48px; height: 48px; margin-top: 0px; margin-left: 64px; } 25% { width: 48px; height: 112px; margin-top: 0px; margin-left: 64px; } 37.5%, 50%, 62.5%, 75%, 87.5% { width: 48px; height: 48px; margin-top: 64px; margin-left: 64px; } 100% { width: 112px; height: 48px; margin-top: 64px; margin-left: 0px; } }
+
+        .loading-text-container {
+            bottom: clamp(20px, 1vh, 50px);
+            right: clamp(16px, 4vw, 40px);
+            animation: blurIn 1s ease forwards 5.2s;
+        }
+        .loading-text-small {
+            color: #fff;
+            font-size: clamp(24px, min(6vw, 6svh), 36px);
+            font-family: 'Oswald', sans-serif; letter-spacing: 2px; font-weight: 700;
+        }
+        .deco-top-left {
+            top: clamp(16px, 4svh, 40px);
+            left: clamp(16px, 4vw, 40px);
+            animation: blurIn 1s ease forwards 5.0s;
+        }
+        .deco-box { border-left: 4px solid #fff; padding-left: 15px; color: rgba(255,255,255,0.6); }
+        .deco-title { font-size: clamp(14px, 4vw, 22px); font-weight: 700; color: #fff; letter-spacing: 3px; margin-bottom: 2px; }
+        .deco-sub { font-size: clamp(10px, 2.5vw, 13px); font-family: 'Montserrat', sans-serif; letter-spacing: 1px; }
+        .deco-dots { margin-top: 8px; display: flex; gap: 5px; }
+        .dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; opacity: 0.5; }
+        .dot:nth-child(1) { animation: blink 1s infinite; }
+        .dot:nth-child(2) { animation: blink 1s infinite 0.2s; }
+        .dot:nth-child(3) { animation: blink 1s infinite 0.4s; }
+        @keyframes blink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+        .smooth-blur-exit { filter: blur(20px); opacity: 0 !important; transition: filter 0.8s ease, opacity 0.8s ease; pointer-events: none; }
+
+        /* ====================================================================
+           MAIN PAGE CONTENT
+           ==================================================================== */
+        .main-page-content {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow-y: auto; overflow-x: hidden;
+            opacity: 0; pointer-events: none;
+            transition: opacity 1s ease, filter 1s ease;
+            filter: blur(10px); scroll-behavior: smooth;
+        }
+        .main-page-content::-webkit-scrollbar { display: none; }
+        .main-page-content { -ms-overflow-style: none; scrollbar-width: none; }
+        .show-main-page { opacity: 1 !important; filter: blur(0) !important; pointer-events: auto !important; }
+
+        .sticky-view-container {
+            position: sticky; top: 0; width: 100%; height: 100svh;
+            padding: var(--pad) var(--pad) clamp(6px, 1.2svh, 12px);
+            box-sizing: border-box;
+            display: flex; flex-direction: column;
+        }
+        .scroll-trigger-space { height: 100vh; width: 100%; pointer-events: none; }
+
+        /* --- HEADER NAV --- */
+        .top-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%;
+            margin-bottom: clamp(8px, 2svh, 18px);
+            z-index: 100; flex-shrink: 0;
+        }
+        .nav-box-left {
+            width: var(--nav-h); height: var(--nav-h);
+            background-color: #050505;
+            border-radius: var(--nav-br);
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            overflow: hidden; flex-shrink: 0;
+        }
+        .preloader-uiverse {
+            position: relative; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            filter: drop-shadow(0 0 2px #fff); transform: scale(1.6);
+        }
+        .crack {
+            position: absolute; width: 10%; aspect-ratio: 1;
+            background-color: #fef3fc;
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+            animation: rotateCrack 6s infinite linear;
+        }
+        .crack2 { width: 15%; animation-delay: 1s; }
+        .crack3 { width: 20%; animation-delay: 1.5s; }
+        .crack4 { width: 25%; animation-delay: 2s; }
+        .crack5 { width: 30%; animation-delay: 2.5s; }
+        @keyframes rotateCrack { to { rotate: 360deg; } }
+
+        .nav-box-right {
+            display: flex; align-items: center; justify-content: center;
+            background-color: #050505;
+            height: var(--nav-h);
+            border-radius: var(--nav-br);
+            padding: 0 clamp(10px, 3vw, 20px);
+            gap: clamp(8px, 2vw, 15px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .my-world-txt {
+            font-family: 'Oswald', sans-serif; font-weight: 700;
+            font-size: clamp(12px, 3.2vw, 16px);
+            letter-spacing: 1px; color: #fff;
+        }
+        .scroll-percent-box {
+            background-color: #fff; border-radius: 10px;
+            padding: 4px clamp(6px, 1.5vw, 10px);
+            height: clamp(24px, 6vw, 30px);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Montserrat', sans-serif; font-weight: 700;
+            font-size: clamp(10px, 2.5vw, 13px); color: #000; letter-spacing: 1px;
+        }
+        .hamburger-menu { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 5px; }
+        .hamburger-menu span { display: block; width: clamp(16px, 4vw, 22px); height: 2px; background-color: #fff; border-radius: 2px; transition: 0.3s; }
+
+        /* --- PAGE LAYER 1 --- */
+        #pageLayer1 {
+            position: relative; flex-grow: 1; min-height: 0;
+            transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+            display: flex; flex-direction: column; justify-content: flex-start;
+            overflow: hidden;
+            gap: clamp(4px, 1.2svh, 16px);
+        }
+        .layer-blur-out { opacity: 0; filter: blur(20px); transform: scale(0.95) translateY(-30px); pointer-events: none; }
+
+        .hero-text-section { width: 100%; flex-shrink: 0; }
+        .hello-strangers {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(44px, min(15vw, 10svh), 120px);
+            font-weight: 700; color: #050505;
+            line-height: 0.95; margin: 0 0 clamp(4px, 1svh, 16px) 0;
+            letter-spacing: -1px;
+            display: flex; flex-direction: column;
+        }
+        .reveal-mask { overflow: hidden; display: inline-block; vertical-align: top; padding-bottom: 5px; }
+        .rise-text { display: inline-block; opacity: 0; transform: translateY(120%); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), opacity 0.6s ease; }
+        .intro-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(11px, min(2.4vw, 2svh), 16px);
+            font-weight: 500; color: #555; width: 100%;
+            text-align: justify; line-height: 1.45; margin: 0;
+        }
+        .show-main-page .rise-text { transform: translateY(0); opacity: 1; }
+
+        .tags-marquee-container {
+            width: 100%; overflow: hidden; position: relative;
+            margin-top: 0;
+            flex-shrink: 0;
+            height: clamp(28px, 6svh, 48px);
+            display: flex; align-items: center;
+            mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+        }
+        .tags-track { display: flex; gap: 15px; width: max-content; animation: scrollTags 20s linear infinite; }
+        @keyframes scrollTags { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .tag-item {
+            padding: clamp(7px, 1.8vw, 10px) clamp(12px, 3vw, 16px);
+            border: 1px solid #dcdcdc; border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(12px, 3.2vw, 15px);
+            font-weight: 600; color: #777; white-space: nowrap;
+            transition: all 0.3s ease; cursor: pointer; flex-shrink: 0;
+        }
+        .tag-item:hover { border-color: #050505; color: #050505; }
+
+        /* WAVE SEPARATOR */
+        .wave-separator-container {
+            width: 100%; display: flex; justify-content: center; align-items: center;
+            gap: clamp(3px, 1vw, 6px);
+            height: clamp(14px, 3svh, 26px);
+            flex-shrink: 0; margin-top: 0; margin-bottom: 0;
+        }
+        .wave-box {
+            background-color: #050505; border-radius: 2px;
+            width: clamp(4px, 1vw, 6px); height: clamp(4px, 1vw, 6px);
+            animation: wavePulse 1.5s infinite ease-in-out;
+        }
+        @keyframes wavePulse { 0%, 100% { transform: scale(0.8); opacity: 0.5; } 50% { transform: scale(1.6); opacity: 1; } }
+        .wave-box:nth-child(1), .wave-box:nth-child(15) { animation-delay: 0s; }
+        .wave-box:nth-child(2), .wave-box:nth-child(14) { animation-delay: 0.1s; }
+        .wave-box:nth-child(3), .wave-box:nth-child(13) { animation-delay: 0.2s; }
+        .wave-box:nth-child(4), .wave-box:nth-child(12) { animation-delay: 0.3s; }
+        .wave-box:nth-child(5), .wave-box:nth-child(11) { animation-delay: 0.4s; }
+        .wave-box:nth-child(6), .wave-box:nth-child(10) { animation-delay: 0.5s; }
+        .wave-box:nth-child(7), .wave-box:nth-child(9)  { animation-delay: 0.6s; }
+        .wave-box:nth-child(8) { animation-delay: 0.7s; transform-origin: center; width: clamp(5px,1.2vw,8px); height: clamp(5px,1.2vw,8px); }
+
+        /* --- BOTTOM SHOWCASE (SWIPE + CAROUSEL) --- */
+        .bottom-showcase {
+            display: flex; align-items: flex-end; gap: 0;
+            width: 100%;
+            flex-shrink: 0;
+            flex-grow: 1;
+            min-height: clamp(140px, 28svh, 260px);
+            position: relative;
+            overflow: hidden;
+        }
+        .swipe-wrapper { flex-shrink: 0; align-self: stretch; height: 100%; display: flex; }
+        .swipe-box {
+            background-color: #050505;
+            width: clamp(50px, 16vw, 62px);
+            height: 100%;
+            border-radius: clamp(14px, 3.5vw, 20px);
+            display: flex; justify-content: space-evenly; align-items: center;
+            flex-direction: column;
+            position: relative; padding: clamp(10px, 2.5svh, 20px) 0; z-index: 12;
+        }
+        .swipe-text-container { position: relative; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: space-evenly; }
+        .swipe-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(20px, min(6vw, 5svh), 38px);
+            font-weight: 700; line-height: 1; text-align: center; text-transform: uppercase;
+            display: flex; flex-direction: column; align-items: center; gap: clamp(2px, 0.5svh, 6px);
+        }
+        .swipe-text span { display: block; }
+        .swipe-text.outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); }
+        .swipe-text.solid { color: #ffffff; position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip-path: inset(100% 0 0 0); transition: clip-path 0.1s linear; }
+
+        .stacked-carousel-container {
+            position: relative; flex-grow: 1;
+            align-self: stretch;
+            height: 100%;
+            flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center;
+            overflow: hidden;
+        }
+        .stacked-carousel-container::before {
+            content: ''; position: absolute; top: 0; left: 0; bottom: 0;
+            width: clamp(30px, 8vw, 50px);
+            background: linear-gradient(to right, #ffffff 20%, transparent);
+            pointer-events: none;
+            z-index: 15;
+        }
+        .stacked-carousel-container::after {
+            content: ''; position: absolute; top: 0; right: 0; bottom: 0;
+            width: clamp(30px, 8vw, 50px);
+            background: linear-gradient(to left, #ffffff 20%, transparent);
+            pointer-events: none;
+            z-index: 15;
+        }
+        .stacked-carousel { position: relative; width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+
+        /* Slide: tinggi absolut svh bukan persen container */
+        .slide-item {
+            position: absolute;
+            bottom: clamp(8px, 2svh, 18px);
+            left: 50%;
+            width: clamp(100px, 26vw, 170px);
+            height: clamp(130px, 28svh, 280px);
+            border-radius: clamp(12px, 3vw, 18px);
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.5s cubic-bezier(0.25,1,0.5,1), opacity 0.5s ease, filter 0.5s ease, left 0.5s cubic-bezier(0.25,1,0.5,1), z-index 0.5s;
+            cursor: pointer; user-select: none;
+            will-change: transform, left, opacity;
+            background-color: #eee; transform-origin: bottom center;
+        }
+
+        .carousel-title-box {
+            /* posisi relatif ke bottom-showcase, bukan carousel container */
+            position: absolute;
+            right: clamp(4px, 1.5vw, 10px);
+            bottom: clamp(8px, 2svh, 18px);
+            text-align: right; font-family: 'Oswald', sans-serif;
+            text-transform: uppercase; line-height: 1.05;
+            z-index: 70; pointer-events: none;
+        }
+        .c-title-line1 {
+            font-size: clamp(10px, min(3vw, 2svh), 17px);
+            font-weight: 500; color: #777; margin-bottom: -2px;
+        }
+        .c-title-line2 {
+            /* pakai min vw vs svh agar tidak overflow HP pendek */
+            font-size: clamp(22px, min(8.5vw, 7.5svh), 48px);
+            font-weight: 800; color: #050505; letter-spacing: 1px;
+        }
+
+        .sticky-view-container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 160px;
+            background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 100%);
+            pointer-events: none; z-index: 0;
+        }
+
+        /* --- PAGE LAYER 2: WHO I AM --- */
+        #pageLayer2 {
+            position: absolute;
+            top: calc(var(--nav-h) + var(--pad) * 2);
+            left: var(--pad); right: var(--pad); bottom: var(--pad);
+            opacity: 0; transform: translateY(100px); pointer-events: none;
+            transition: opacity 0.8s cubic-bezier(0.2,1,0.3,1) 0.1s, transform 0.8s cubic-bezier(0.2,1,0.3,1) 0.1s;
+            color: #ffffff; z-index: 20;
+            display: flex; flex-direction: column; gap: clamp(4px, 1svh, 12px);
+        }
+        .layer-slide-in { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; }
+
+        .wia-big-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(44px, min(16vw, 11svh), 140px);
+            font-weight: 700; line-height: 0.88; color: #fff; margin: 0;
+            letter-spacing: clamp(-2px, -0.5vw, -3px); flex-shrink: 0;
+        }
+        .wia-big-title span { color: #e63946; }
+
+        .wia-divider { display: flex; align-items: center; flex-shrink: 0; }
+        .wia-div-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); }
+        .wia-div-icon { font-size: clamp(12px, 3vw, 16px); margin: 0 14px; color: rgba(255,255,255,0.7); animation: spinRotate 6s linear infinite; }
+
+        .wia-big-card {
+            flex-grow: 1; min-height: 0;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: clamp(12px, 3vw, 18px);
+            position: relative; overflow: hidden;
+            padding: clamp(8px, 2svh, 18px) clamp(8px, 2.5vw, 18px);
+            display: flex; flex-direction: column;
+        }
+
+        /* Photo inset: proporsi terhadap kartu */
+        .wia-photo-inset {
+            position: absolute; top: 0; right: 0;
+            width: clamp(90px, min(28vw, 22svh), 155px);
+            height: clamp(110px, min(35vw, 28svh), 195px);
+            border-radius: 0 clamp(12px,3vw,18px) 0 clamp(10px,2.5vw,16px);
+            overflow: hidden; background: rgba(255,255,255,0.1); z-index: 2;
+        }
+        .wia-photo-inset img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .wia-photo-inset-label {
+            position: absolute; bottom: 7px; left: 0; right: 0; text-align: center;
+            font-family: 'Montserrat', sans-serif; font-size: clamp(8px, 2.2vw, 10px);
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            color: rgba(255,255,255,0.9); text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+        }
+
+        .wia-card-top-row {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: clamp(6px, 1.5svh, 26px);
+            /* ruang untuk foto */
+            padding-right: clamp(95px, min(30vw, 24svh), 165px);
+        }
+        .wia-desc-label {
+            font-family: 'Montserrat', sans-serif; font-size: clamp(8px, 2vw, 9px);
+            font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+            color: rgba(255,255,255,0.4); margin-bottom: 4px;
+        }
+        .wia-desc-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(20px, min(5.2vw, 5svh), 30px);
+            font-weight: 700; color: #fff; line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .wia-content-scroll {
+            display: block; flex-grow: 1; overflow-y: auto; padding-right: 5px;
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .wia-content-scroll::-webkit-scrollbar { display: none; }
+
+        .photo-spacer {
+            float: right;
+            width: clamp(90px, min(28vw, 22svh), 155px);
+            height: clamp(60px, min(19vw, 15svh), 115px);
+            margin-bottom: 8px; shape-outside: margin-box;
+        }
+
+        .wia-section-group { margin-bottom: clamp(6px, 1.5svh, 18px); }
+        .wia-group-title {
+            font-family: 'Oswald', sans-serif; font-size: clamp(13px, min(3.4vw, 2.5svh), 17px);
+            color: #e63946; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px;
+        }
+        .wia-desc-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(11px, min(3vw, 2.5svh), 16px);
+            line-height: 1.55; color: rgba(255,255,255,0.7); margin: 0; text-align: justify;
+        }
+
+        .word-reveal {
+            display: inline-block; opacity: 0; filter: blur(5px); transform: translateY(5px);
+            transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+            margin-right: 4px; will-change: opacity, filter, transform;
+        }
+        .word-reveal.is-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+        .wia-desc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+        .wia-desc-tag {
+            font-family: 'Montserrat', sans-serif; font-size: clamp(9px, 2.2vw, 11px);
+            font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;
+            padding: clamp(4px,1vw,5px) clamp(9px,2.2vw,12px); color: rgba(255,255,255,0.6);
+        }
+
+        .wia-card-stats {
+            display: flex; gap: 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: auto; padding-top: clamp(5px,1.2svh,14px); flex-shrink: 0;
+        }
+        .wia-stat { flex: 1; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .wia-stat:last-child { border-right: none; }
+        .wia-stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(18px, min(5vw, 4.5svh), 30px);
+            font-weight: 700; color: #fff; line-height: 1;
+        }
+        .wia-stat-label {
+            font-family: 'Montserrat', sans-serif; font-size: clamp(7px, min(1.8vw, 1.5svh), 10px);
+            letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4);
+            font-weight: 600; margin-top: 2px;
+        }
+
+        @keyframes spinRotate { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.3); } 100% { transform: rotate(360deg) scale(1); } }
+
+        /* ============================================================
+           EXTRA FINE-TUNING PER BREAKPOINT
+           ============================================================ */
+
+        /* HP kecil: lebar < 360px */
+        @media (max-width: 359px) {
+            .hello-strangers { font-size: clamp(36px, 13vw, 56px); }
+            .wia-big-title { font-size: clamp(36px, 14vw, 60px); }
+            .c-title-line2 { font-size: clamp(20px, 8vw, 32px); }
+        }
+
+        /* HP sangat tinggi (rasio > 2:1) */
+        @media (max-aspect-ratio: 9/18) {
+            .hello-strangers { font-size: clamp(44px, 11vw, 80px); }
+        }
+
+        /* HP pendek: tinggi 700px ke bawah */
+        @media (max-height: 700px) {
+            #pageLayer1 { gap: clamp(3px, 1svh, 10px); }
+            .hello-strangers { font-size: clamp(36px, min(12vw, 8svh), 72px); margin-bottom: clamp(2px, 0.8svh, 10px); }
+            .intro-text { font-size: clamp(10px, min(2.2vw, 1.8svh), 14px); line-height: 1.4; }
+            .tags-marquee-container { height: clamp(24px, 5svh, 38px); }
+            .tag-item { padding: clamp(4px,1vw,7px) clamp(9px,2.2vw,13px); font-size: clamp(10px, 2.8vw, 13px); }
+            .wave-separator-container { height: clamp(10px, 2.5svh, 20px); }
+            .bottom-showcase { min-height: clamp(100px, 22svh, 200px); max-height: clamp(150px, 32svh, 260px); }
+            .c-title-line1 { font-size: clamp(9px, min(2.5vw, 1.8svh), 14px); }
+            .c-title-line2 { font-size: clamp(18px, min(7.5vw, 6.5svh), 40px); }
+            .wia-big-title { font-size: clamp(36px, min(14vw, 9svh), 100px); }
+            #pageLayer2 { gap: clamp(3px, 0.8svh, 8px); }
+            .wia-big-card { padding: clamp(6px,1.5svh,12px) clamp(8px,2vw,14px); }
+            .wia-card-top-row { margin-bottom: clamp(4px, 1svh, 14px); }
+            .wia-section-group { margin-bottom: clamp(4px, 1svh, 12px); }
+            .wia-desc-text { font-size: clamp(10px, min(2.8vw, 2.2svh), 14px); line-height: 1.45; }
+            .wia-stat-value { font-size: clamp(16px, min(4.5vw, 3.8svh), 26px); }
+            .wia-card-stats { padding-top: clamp(4px, 1svh, 10px); }
+        }
+
+        /* HP sangat pendek: tinggi 600px ke bawah */
+        @media (max-height: 600px) {
+            .hello-strangers { font-size: clamp(30px, min(11vw, 7svh), 58px); }
+            .intro-text { font-size: clamp(9px, min(2vw, 1.7svh), 13px); }
+            .tags-marquee-container { height: clamp(20px, 4svh, 32px); }
+            .tag-item { padding: clamp(3px,0.8vw,5px) clamp(7px,1.8vw,11px); font-size: clamp(9px, 2.5vw, 12px); }
+            .wave-separator-container { height: clamp(8px, 2svh, 16px); }
+            .bottom-showcase { min-height: clamp(90px, 20svh, 170px); max-height: clamp(130px, 28svh, 220px); }
+            .swipe-box { width: clamp(40px, 12vw, 54px); }
+            .swipe-text { font-size: clamp(18px, 5vw, 28px); }
+            .c-title-line2 { font-size: clamp(16px, min(6.5vw, 5.5svh), 32px); }
+            .wia-big-title { font-size: clamp(30px, min(12vw, 7.5svh), 80px); }
+            .wia-photo-inset { width: clamp(75px, min(22vw, 17svh), 120px); height: clamp(90px, min(28vw, 21svh), 155px); }
+            .photo-spacer { width: clamp(75px, min(22vw, 17svh), 120px); height: clamp(50px, min(14vw, 11svh), 90px); }
+            .wia-card-top-row { padding-right: clamp(80px, min(24vw, 19svh), 130px); }
+            .wia-desc-name { font-size: clamp(16px, min(4.5vw, 4svh), 24px); }
+            .wia-stat-value { font-size: clamp(14px, min(4vw, 3.5svh), 22px); }
+        }
+
+        /* Landscape HP */
+        @media (orientation: landscape) and (max-height: 500px) {
+            .hello-strangers { font-size: clamp(26px, 8svh, 55px); }
+            .wia-big-title { font-size: clamp(28px, 9svh, 70px); }
+            .bottom-showcase { min-height: clamp(80px, 24svh, 160px); max-height: clamp(100px, 32svh, 190px); }
+            .c-title-line2 { font-size: clamp(18px, 6svh, 32px); }
+            .tags-marquee-container { height: clamp(20px, 4svh, 36px); }
+            .wave-separator-container { height: clamp(8px, 2svh, 16px); }
+            #pageLayer1 { gap: 2px; }
+            .intro-text { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container" id="mainContainer">
+        <div class="vignette" id="vignette"></div>
+        <div class="backdrop" id="backdrop"></div>
+        <div class="deco-top-left" id="decoLeft"><div class="deco-box"><div class="deco-title">FLABS // SYS</div><div class="deco-sub">VER 2.0 // ONLINE</div><div class="deco-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+        <div class="cross-container" id="crossBar"><div class="cross-arm arm-1"><div class="scrolling-text">FLABSWORLD PORTOFOLIO FLABSWORLD PORTOFOLIO FLABSWORLD</div></div><div class="cross-arm arm-2"><div class="scrolling-text">PORTOFOLIO FLABSWORLD PORTOFOLIO FLABSWORLD PORTOFOLIO</div></div></div>
+
+        <div class="card" id="mainCard">
+            <div class="card-content-wrapper" id="cardContent">
+                <div class="header-section"><div class="subtitle-top blur-anim delay-30">GREAT PLACE TO SHOW OFF</div><h1 class="title-main blur-anim delay-32">PORTOFOLIO</h1><div class="divider-container"><div class="line-wrapper left"><div class="line-inner"></div></div><div class="divider-text">START</div><div class="line-wrapper right"><div class="line-inner"></div></div></div><div class="subtitle-bottom blur-anim delay-34">Amazing Gradient From Our Solar System</div></div>
+                <div class="visual-section"><div class="outline-text-container blur-anim delay-34"><p class="outline-text">PORTO</p><p class="outline-text">FOLIO</p></div><img src="background.png" alt="" class="bottom-bg blur-anim delay-34"><img src="orang.png" alt="" class="person-image blur-anim delay-34"></div>
+            </div>
+
+            <div class="main-page-content" id="mainPageContent">
+                <div class="sticky-view-container">
+                    
+                    <div class="top-nav">
+                        <div class="nav-box-left"><div class="preloader-uiverse"><div class="crack"></div><div class="crack crack2"></div><div class="crack crack3"></div><div class="crack crack4"></div><div class="crack crack5"></div></div></div>
+                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent">000</span>%</div><div class="hamburger-menu"><span></span><span></span></div></div>
+                    </div>
+
+                    <div id="pageLayer1">
+                        <div class="hero-text-section">
+                            <h1 class="hello-strangers">
+                                <span class="reveal-mask"><span class="rise-text" style="transition-delay: 0.1s">HELLO</span></span>
+                                <span class="reveal-mask"><span class="rise-text" style="transition-delay: 0.2s">STRANGERS</span></span>
+                            </h1>
+                            <div class="intro-text" id="introText">
+                                Welcome to my creative space. I build digital experiences, explore modern typography, and turn abstract thoughts into structured visual identities. Let's dive into the journey.
+                            </div>
+                        </div>
+
+                        <div class="tags-marquee-container">
+                            <div class="tags-track">
+                                <span class="tag-item">Stories</span>
+                                <span class="tag-item">Street style</span>
+                                <span class="tag-item">PDPs</span>
+                                <span class="tag-item">UGC</span>
+                                <span class="tag-item">Branding</span>
+                                <span class="tag-item">Visual</span>
+                                <span class="tag-item">Motion</span>
+                                <span class="tag-item">Stories</span>
+                                <span class="tag-item">Street style</span>
+                                <span class="tag-item">PDPs</span>
+                            </div>
+                        </div>
+
+                        <div class="wave-separator-container">
+                            <div class="wave-box"></div><div class="wave-box"></div><div class="wave-box"></div>
+                            <div class="wave-box"></div><div class="wave-box"></div><div class="wave-box"></div>
+                            <div class="wave-box"></div><div class="wave-box"></div><div class="wave-box"></div>
+                            <div class="wave-box"></div><div class="wave-box"></div><div class="wave-box"></div>
+                            <div class="wave-box"></div><div class="wave-box"></div><div class="wave-box"></div>
+                        </div>
+
+                        <div class="bottom-showcase">
+                            <div class="swipe-wrapper">
+                                <div class="swipe-box">
+                                    <div class="swipe-text-container">
+                                        <div class="swipe-text outline"><span>S</span><span>W</span><span>I</span><span>P</span><span>E</span></div>
+                                        <div class="swipe-text solid" id="swipeSolidText"><span>S</span><span>W</span><span>I</span><span>P</span><span>E</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="stacked-carousel-container">
+                                <div class="stacked-carousel" id="carousel">
+                                    <img src="red.png" alt="Slide 1" class="slide-item">
+                                    <img src="blue.png" alt="Slide 2" class="slide-item">
+                                    <img src="green.png" alt="Slide 3" class="slide-item">
+                                </div>
+                            </div>
+
+                            <!-- title dipindah ke bottom-showcase supaya tidak nabrak slide -->
+                            <div class="carousel-title-box">
+                                <div class="c-title-line1" id="scrambleLine1">JUST</div>
+                                <div class="c-title-line2" id="scrambleLine2">PEOPLE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pageLayer2">
+                        <div class="wia-big-title">WHO I <span>AM?</span></div>
+                        <div class="wia-divider"><div class="wia-div-line"></div><span class="wia-div-icon">✦</span><div class="wia-div-line"></div></div>
+
+                        <div class="wia-big-card">
+                            <div class="wia-photo-inset">
+                                <img src="profile1.png" alt="Fema">
+                                <div class="wia-photo-inset-label">Profile</div>
+                            </div>
+                            
+                            <div class="wia-card-top-row">
+                                <div>
+                                    <div class="wia-desc-label">About Me</div>
+                                    <div class="wia-desc-name">Fema Andara Haqi</div>
+                                </div>
+                            </div>
+
+                            <div class="wia-content-scroll" id="wiaScrollArea">
+                                <!-- INI ADALAH PENGGANJAL FOTO AGAR TEKS TIDAK NABRAK -->
+                                <div class="photo-spacer"></div>
+
+                                <div class="wia-section-group">
+                                    <p class="wia-desc-text anim-blur-text">
+                                        A <strong>17-year-old digital creator</strong> who crafts visual stories with purpose. Emotional experiences — from brand identities to motion content.
+                                    </p>
+                                </div>
+
+                                <div class="wia-section-group">
+                                    <div class="wia-group-title">Focus & Style</div>
+                                    <p class="wia-desc-text anim-blur-text">
+                                        Specializing in <strong>street style photography, UGC, branding, and visual design</strong>. Every project is a chance to push creative limits and explore new aesthetics.
+                                    </p>
+                                    <div class="wia-desc-tags"><span class="wia-desc-tag">Branding</span><span class="wia-desc-tag">Motion</span><span class="wia-desc-tag">UGC</span><span class="wia-desc-tag">Visual</span></div>
+                                </div>
+
+                                <div class="wia-section-group">
+                                    <div class="wia-group-title">Hobbies & Location</div>
+                                    <p class="wia-desc-text anim-blur-text">
+                                        Based in <strong>Indonesia</strong>. When I'm not designing, I love exploring urban photography, listening to synthwave music, and experimenting with video editing.
+                                    </p>
+                                    <div class="wia-desc-tags"><span class="wia-desc-tag">Indonesia</span><span class="wia-desc-tag">Music</span><span class="wia-desc-tag">Editing</span></div>
+                                </div>
+                            </div>
+
+                            <div class="wia-card-stats"><div class="wia-stat"><div class="wia-stat-value">3+</div><div class="wia-stat-label">Years</div></div><div class="wia-stat"><div class="wia-stat-value">50+</div><div class="wia-stat-label">Projects</div></div><div class="wia-stat"><div class="wia-stat-value">17</div><div class="wia-stat-label">Age</div></div><div class="wia-stat"><div class="wia-stat-value">∞</div><div class="wia-stat-label">Ideas</div></div></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="scroll-trigger-space"></div>
+            </div>
+        </div>
+
+        <div class="loader-wrapper" id="loaderWrap"><div class="loader"><div class="box1"></div><div class="box2"></div><div class="box3"></div></div></div>
+        <div class="loading-text-container" id="percentContainer"><div class="loading-text-small" id="loadPercent">0%</div></div>
+    </div>
+
+    <script>
+        function splitTextIntoWords() {
+            const introEl = document.getElementById('introText');
+            if(!introEl) return;
+            const text = introEl.innerText;
+            const words = text.split(' ');
+            introEl.innerHTML = '';
+            words.forEach((word, index) => {
+                const mask = document.createElement('span'); mask.className = 'reveal-mask'; mask.style.marginRight = '5px'; 
+                const inner = document.createElement('span'); inner.className = 'rise-text'; inner.style.transitionDelay = `${0.3 + (index * 0.03)}s`; inner.innerText = word;
+                mask.appendChild(inner); introEl.appendChild(mask);
+            });
+        }
+
+        function prepareWordAnimation() {
+            const targets = document.querySelectorAll('.anim-blur-text');
+            targets.forEach((el) => {
+                const newContent = document.createDocumentFragment();
+                const nodes = Array.from(el.childNodes);
+                
+                nodes.forEach(node => {
+                    if (node.nodeType === 3) { 
+                        const words = node.nodeValue.split(' ');
+                        words.forEach((word) => {
+                            if(word.trim().length > 0) {
+                                const span = document.createElement('span');
+                                span.className = 'word-reveal';
+                                span.textContent = word;
+                                newContent.appendChild(span);
+                            }
+                        });
+                    } else { 
+                        const cloned = node.cloneNode(true);
+                        const innerWords = cloned.innerText.split(' ');
+                        cloned.innerHTML = '';
+                        innerWords.forEach(w => {
+                            if(w.trim().length > 0) {
+                                const s = document.createElement('span');
+                                s.className = 'word-reveal';
+                                s.textContent = w;
+                                cloned.appendChild(s);
+                            }
+                        });
+                        newContent.appendChild(cloned);
+                    }
+                });
+                
+                el.innerHTML = '';
+                el.appendChild(newContent);
+            });
+        }
+
+        function initWordScrollObserver() {
+            const scrollArea = document.getElementById('wiaScrollArea');
+            const words = document.querySelectorAll('.word-reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, Math.random() * 100); 
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                root: scrollArea, 
+                threshold: 0.1
+            });
+
+            words.forEach(word => observer.observe(word));
+        }
+
+        window.onload = function() {
+            splitTextIntoWords();
+            prepareWordAnimation(); 
+
+            const loadText = document.getElementById('loadPercent');
+            let val = 0;
+            const elementsToBlur =[document.getElementById('decoLeft'), document.getElementById('crossBar'), document.getElementById('loaderWrap'), document.getElementById('percentContainer'), document.getElementById('cardContent'), document.getElementById('vignette'), document.getElementById('backdrop')];
+            const mainContainer = document.getElementById('mainContainer');
+            const mainCard = document.getElementById('mainCard');
+            const mainPageContent = document.getElementById('mainPageContent');
+
+            setTimeout(() => {
+                const interval = setInterval(() => {
+                    if (val >= 100) {
+                        clearInterval(interval);
+                        loadText.innerText = "100%";
+                        elementsToBlur.forEach(el => { if(el) el.classList.add('smooth-blur-exit'); });
+                        setTimeout(() => {
+                            mainContainer.classList.add('expand-black');
+                            mainCard.classList.add('expand-white');
+                            setTimeout(() => {
+                                mainPageContent.classList.add('show-main-page');
+                                initCarousel(); 
+                            }, 500);
+                        }, 800); 
+                    } else {
+                        val++; loadText.innerText = val + '%';
+                    }
+                }, 20); 
+            }, 1000); 
+
+            const pageScrollPercentText = document.getElementById('pageScrollPercent');
+            const swipeSolidText = document.getElementById('swipeSolidText');
+            const pageLayer1 = document.getElementById('pageLayer1');
+            const pageLayer2 = document.getElementById('pageLayer2');
+            let isStacked = false; 
+
+            mainPageContent.addEventListener('scroll', () => {
+                let scrollTop = mainPageContent.scrollTop;
+                let scrollHeight = mainPageContent.scrollHeight - mainPageContent.clientHeight;
+                let scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+                
+                if (isNaN(scrollPercent)) scrollPercent = 0;
+                if (scrollPercent < 0) scrollPercent = 0;
+                if (scrollPercent > 100) scrollPercent = 100;
+                
+                pageScrollPercentText.innerText = String(scrollPercent).padStart(3, '0');
+                if(swipeSolidText) swipeSolidText.style.clipPath = `inset(${100 - scrollPercent}% 0 0 0)`;
+
+                if (scrollPercent >= 75 && !isStacked) {
+                    isStacked = true;
+                    mainCard.classList.add('theme-maroon'); 
+                    pageLayer1.classList.add('layer-blur-out');
+                    pageLayer2.classList.add('layer-slide-in');
+                    setTimeout(initWordScrollObserver, 500); 
+                } else if (scrollPercent < 70 && isStacked) {
+                    isStacked = false;
+                    mainCard.classList.remove('theme-maroon');
+                    pageLayer1.classList.remove('layer-blur-out');
+                    pageLayer2.classList.remove('layer-slide-in');
+                }
+            });
+
+            function initCarousel() {
+                const carousel = document.getElementById('carousel');
+                const slides = document.querySelectorAll('.slide-item');
+                const titleLine1 = document.getElementById('scrambleLine1');
+                const titleLine2 = document.getElementById('scrambleLine2');
+                
+                let currentSlide = 0; let startX = 0; let isDragging = false;
+                const slideTitles =[{ line1: "JUST", line2: "PEOPLE" }, { line1: "NEON", line2: "DREAMS" }, { line1: "URBAN", line2: "VIBES" }];
+
+                function scrambleText(element, newText) {
+                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&*';
+                    let iterations = 0;
+                    const interval = setInterval(() => {
+                        element.innerText = newText.split('').map((letter, index) => {
+                            if (index < iterations) return letter;
+                            return chars[Math.floor(Math.random() * chars.length)];
+                        }).join('');
+                        if (iterations >= newText.length) clearInterval(interval);
+                        iterations += 0.4; 
+                    }, 35);
+                }
+
+                function updateCarousel() {
+                    slides.forEach((slide, i) => {
+                        let offset = i - currentSlide;
+                        if (offset > 1) offset -= slides.length; if (offset < -1) offset += slides.length;
+                        slide.style.zIndex = slides.length - Math.abs(offset);
+                        if (offset === 0) { slide.style.left = '50%'; slide.style.transform = 'translate(-50%, 0) scale(1)'; slide.style.opacity = '1'; slide.style.filter = 'blur(0)'; } 
+                        else if (offset === 1) { slide.style.left = '80%'; slide.style.transform = 'translate(-50%, 0) scale(0.8)'; slide.style.opacity = '0.7'; slide.style.filter = 'blur(4px)'; } 
+                        else if (offset === -1) { slide.style.left = '20%'; slide.style.transform = 'translate(-50%, 0) scale(0.8)'; slide.style.opacity = '0.7'; slide.style.filter = 'blur(4px)'; }
+                    });
+                    const targetTitle = slideTitles[currentSlide];
+                    scrambleText(titleLine1, targetTitle.line1);
+                    scrambleText(titleLine2, targetTitle.line2);
+                }
+                updateCarousel();
+
+                function handleSwipe(start, end) {
+                    let diff = start - end;
+                    if (diff > 40) { currentSlide = (currentSlide + 1) % slides.length; updateCarousel(); } 
+                    else if (diff < -40) { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
+                }
+
+                carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+                carousel.addEventListener('touchend', (e) => { handleSwipe(startX, e.changedTouches[0].clientX); });
+                carousel.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
+                carousel.addEventListener('mouseup', (e) => { if(!isDragging) return; isDragging = false; handleSwipe(startX, e.clientX); });
+                carousel.addEventListener('mouseleave', () => { isDragging = false; });
+                slides.forEach((slide, i) => { slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } }); });
+            }
+        };
+    </script>
+</body>
+</html>
