@@ -1,0 +1,3 @@
+## 2025-05-14 - [Semantic Buttons and Dynamic ARIA Status]
+**Learning:** In a high-motion portfolio, non-semantic interactive elements (like divs for menus) are common but exclude keyboard users. Converting them to buttons with a CSS reset (background: none, border: none, font-family: inherit) preserves the aesthetic while fixing accessibility. Additionally, dynamic percentage counters (loading/scroll) should use role="status" and aria-live="polite" to be accessible to screen readers.
+**Action:** Always check for non-semantic interactive elements and add ARIA live regions to dynamic numeric indicators.
