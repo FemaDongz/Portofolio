@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Buttons and ARIA Live Regions
+**Learning:** Converting non-semantic interactive elements (like `div` or `span`) to `<button>` requires explicit CSS resets for `background`, `border`, and especially `font-family: inherit` to maintain visual consistency in custom-styled themes. Additionally, providing `role="status"` and `aria-live="polite"` to dynamic percentage indicators significantly improves accessibility for screen reader users.
+**Action:** Always check for `font-family` inheritance when converting elements to `<button>` and use ARIA live regions for any auto-updating numeric feedback.
