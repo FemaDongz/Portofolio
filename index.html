@@ -316,7 +316,11 @@
             font-family: 'Montserrat', sans-serif; font-weight: 700;
             font-size: clamp(10px, 2.5vw, 13px); color: #000; letter-spacing: 1px;
         }
-        .hamburger-menu { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 5px; }
+        .hamburger-menu {
+            display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 5px;
+            background: none; border: none; font-family: inherit;
+        }
+        .hamburger-menu:focus-visible { outline: 2px solid #31a8ff; outline-offset: 2px; }
         .hamburger-menu span { display: block; width: clamp(16px, 4vw, 22px); height: 2px; background-color: #fff; border-radius: 2px; transition: 0.3s; }
 
         /* --- PAGE LAYER 1 --- */
@@ -363,11 +367,13 @@
             padding: clamp(7px, 1.8vw, 10px) clamp(12px, 3vw, 16px);
             border: 1px solid #dcdcdc; border-radius: 20px;
             font-family: 'Montserrat', sans-serif;
+            background: none;
             font-size: clamp(12px, 3.2vw, 15px);
             font-weight: 600; color: #777; white-space: nowrap;
             transition: all 0.3s ease; cursor: pointer; flex-shrink: 0;
         }
         .tag-item:hover { border-color: #050505; color: #050505; }
+        .tag-item:focus-visible { outline: 2px solid #31a8ff; outline-offset: 2px; border-color: #050505; }
 
         /* WAVE SEPARATOR */
         .wave-separator-container {
@@ -702,7 +708,7 @@
                     
                     <div class="top-nav">
                         <div class="nav-box-left"><div class="preloader-uiverse"><div class="crack"></div><div class="crack crack2"></div><div class="crack crack3"></div><div class="crack crack4"></div><div class="crack crack5"></div></div></div>
-                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent">000</span>%</div><div class="hamburger-menu"><span></span><span></span></div></div>
+                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent" role="status" aria-live="polite">000</span>%</div><button class="hamburger-menu" aria-label="Menu"><span></span><span></span></button></div>
                     </div>
 
                     <div id="pageLayer1">
@@ -718,16 +724,16 @@
 
                         <div class="tags-marquee-container">
                             <div class="tags-track">
-                                <span class="tag-item">Stories</span>
-                                <span class="tag-item">Street style</span>
-                                <span class="tag-item">PDPs</span>
-                                <span class="tag-item">UGC</span>
-                                <span class="tag-item">Branding</span>
-                                <span class="tag-item">Visual</span>
-                                <span class="tag-item">Motion</span>
-                                <span class="tag-item">Stories</span>
-                                <span class="tag-item">Street style</span>
-                                <span class="tag-item">PDPs</span>
+                                <button class="tag-item">Stories</button>
+                                <button class="tag-item">Street style</button>
+                                <button class="tag-item">PDPs</button>
+                                <button class="tag-item">UGC</button>
+                                <button class="tag-item">Branding</button>
+                                <button class="tag-item">Visual</button>
+                                <button class="tag-item">Motion</button>
+                                <button class="tag-item">Stories</button>
+                                <button class="tag-item">Street style</button>
+                                <button class="tag-item">PDPs</button>
                             </div>
                         </div>
 
@@ -819,7 +825,7 @@
         </div>
 
         <div class="loader-wrapper" id="loaderWrap"><div class="loader"><div class="box1"></div><div class="box2"></div><div class="box3"></div></div></div>
-        <div class="loading-text-container" id="percentContainer"><div class="loading-text-small" id="loadPercent">0%</div></div>
+        <div class="loading-text-container" id="percentContainer"><div class="loading-text-small" id="loadPercent" role="status" aria-live="polite">0%</div></div>
     </div>
 
     <script>
