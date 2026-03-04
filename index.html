@@ -460,6 +460,10 @@
             will-change: transform, left, opacity;
             background-color: #eee; transform-origin: bottom center;
         }
+        .slide-item:focus-visible {
+            outline: 3px solid #e63946;
+            outline-offset: 4px;
+        }
 
         .carousel-title-box {
             /* posisi relatif ke bottom-showcase, bukan carousel container */
@@ -751,9 +755,9 @@
                             
                             <div class="stacked-carousel-container">
                                 <div class="stacked-carousel" id="carousel">
-                                    <img src="red.png" alt="Slide 1" class="slide-item">
-                                    <img src="blue.png" alt="Slide 2" class="slide-item">
-                                    <img src="green.png" alt="Slide 3" class="slide-item">
+                                    <img src="red.png" alt="Slide 1" class="slide-item" tabindex="0" role="button">
+                                    <img src="blue.png" alt="Slide 2" class="slide-item" tabindex="0" role="button">
+                                    <img src="green.png" alt="Slide 3" class="slide-item" tabindex="0" role="button">
                                 </div>
                             </div>
 
@@ -1010,7 +1014,15 @@
                 carousel.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
                 carousel.addEventListener('mouseup', (e) => { if(!isDragging) return; isDragging = false; handleSwipe(startX, e.clientX); });
                 carousel.addEventListener('mouseleave', () => { isDragging = false; });
-                slides.forEach((slide, i) => { slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } }); });
+                slides.forEach((slide, i) => {
+                    slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } });
+                    slide.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            if(currentSlide !== i) { currentSlide = i; updateCarousel(); }
+                        }
+                    });
+                });
             }
         };
     </script>
