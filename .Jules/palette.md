@@ -1,0 +1,3 @@
+## 2025-05-14 - Accessibility for Live Regions and Interactive Elements
+**Learning:** High-frequency dynamic updates (e.g., scroll percentage) should NOT use `aria-live` as they cause incessant and disruptive screen reader announcements. Low-frequency updates (e.g., one-time loading) are appropriate for `aria-live="polite"`. Converting non-semantic interactive elements (divs, spans) to `<button>` requires explicit CSS reset for `background`, `border`, and `font-family: inherit`.
+**Action:** Always check the frequency of updates before applying `aria-live`. Ensure all clickable elements use `<button>` and have corresponding focus-visible styles.
