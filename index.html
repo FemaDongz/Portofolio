@@ -443,7 +443,8 @@
             pointer-events: none;
             z-index: 15;
         }
-        .stacked-carousel { position: relative; width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+        .stacked-carousel { position: relative; width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; outline: none; }
+        .stacked-carousel:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,0.8); border-radius: clamp(14px, 3.5vw, 20px); }
 
         /* Slide: tinggi absolut svh bukan persen container */
         .slide-item {
@@ -750,7 +751,7 @@
                             </div>
                             
                             <div class="stacked-carousel-container">
-                                <div class="stacked-carousel" id="carousel">
+                                <div class="stacked-carousel" id="carousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Portfolio showcases">
                                     <img src="red.png" alt="Slide 1" class="slide-item">
                                     <img src="blue.png" alt="Slide 2" class="slide-item">
                                     <img src="green.png" alt="Slide 3" class="slide-item">
@@ -1010,6 +1011,15 @@
                 carousel.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
                 carousel.addEventListener('mouseup', (e) => { if(!isDragging) return; isDragging = false; handleSwipe(startX, e.clientX); });
                 carousel.addEventListener('mouseleave', () => { isDragging = false; });
+                carousel.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        updateCarousel();
+                    } else if (e.key === 'ArrowRight') {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        updateCarousel();
+                    }
+                });
                 slides.forEach((slide, i) => { slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } }); });
             }
         };
