@@ -762,7 +762,7 @@
                             </div>
 
                             <div class="stacked-carousel-container">
-                                <div class="stacked-carousel" id="carousel">
+                                <div class="stacked-carousel" id="carousel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Image gallery">
                                     <img src="red.png" alt="Slide 1" class="slide-item">
                                     <img src="blue.png" alt="Slide 2" class="slide-item">
                                     <img src="green.png" alt="Slide 3" class="slide-item">
@@ -1013,12 +1013,45 @@
                     else if (diff < -40) { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
                 }
 
-                carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
-                carousel.addEventListener('touchend', (e) => { handleSwipe(startX, e.changedTouches[0].clientX); });
-                carousel.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
-                carousel.addEventListener('mouseup', (e) => { if(!isDragging) return; isDragging = false; handleSwipe(startX, e.clientX); });
-                carousel.addEventListener('mouseleave', () => { isDragging = false; });
-                slides.forEach((slide, i) => { slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } }); });
+                carousel.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        updateCarousel();
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        updateCarousel();
+                    }
+                });
+
+                carousel.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                carousel.addEventListener('touchend', (e) => {
+                    handleSwipe(startX, e.changedTouches[0].clientX);
+                });
+                carousel.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                });
+                carousel.addEventListener('mouseup', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    handleSwipe(startX, e.clientX);
+                });
+                carousel.addEventListener('mouseleave', () => {
+                    isDragging = false;
+                });
+                slides.forEach((slide, i) => {
+                    slide.addEventListener('click', () => {
+                        if (isDragging) return;
+                        if (currentSlide !== i) {
+                            currentSlide = i;
+                            updateCarousel();
+                        }
+                    });
+                });
             }
         };
     </script>
