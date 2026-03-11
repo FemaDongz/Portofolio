@@ -1,0 +1,3 @@
+## 2026-03-11 - Keyboard Navigation for Touch Widgets
+**Learning:** Purely touch/mouse-driven custom widgets (like carousels) completely exclude keyboard users. Implementing `keydown` listeners that map directional arrows to the same logic as swipe handlers makes them usable for all. Always include `e.preventDefault()` on arrow key events within the widget to prevent the browser's default page scroll behavior from interfering with widget interaction.
+**Action:** When auditing or building custom interactive widgets, always check for keyboard parity (tabindex, focus styles, and keydown listeners).
