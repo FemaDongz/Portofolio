@@ -1,0 +1,3 @@
+## 2024-05-14 - Add Keyboard Accessibility to Swipe Carousels
+**Learning:** Custom interactive widgets (like the swipe carousels in this application) built solely around touch/mouse events lack native keyboard accessibility. They do not naturally receive focus or respond to keyboard inputs, excluding users who rely on keyboard navigation.
+**Action:** Always ensure custom interactive elements like carousels include a `tabindex="0"`, semantic ARIA roles (like `role="region"` and `aria-label`), and explicit `keydown` event listeners (e.g., handling Arrow keys). Crucially, always use `e.preventDefault()` within these listeners for directional keys to prevent unintended browser page scrolling.
