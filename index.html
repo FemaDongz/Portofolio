@@ -24,6 +24,13 @@
             --nav-br: clamp(14px, 3.5vw, 18px);
         }
 
+        /* Accessibilty Focus Styles */
+        :focus-visible {
+            outline: 2px solid #31a8ff !important;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
         /* --- 1. BODY --- */
         body {
             background-color: #fff; margin: 0;
@@ -316,7 +323,10 @@
             font-family: 'Montserrat', sans-serif; font-weight: 700;
             font-size: clamp(10px, 2.5vw, 13px); color: #000; letter-spacing: 1px;
         }
-        .hamburger-menu { display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 5px; }
+        .hamburger-menu {
+            display: flex; flex-direction: column; gap: 4px; cursor: pointer; padding: 5px;
+            background: none; border: none; font-family: inherit;
+        }
         .hamburger-menu span { display: block; width: clamp(16px, 4vw, 22px); height: 2px; background-color: #fff; border-radius: 2px; transition: 0.3s; }
 
         /* --- PAGE LAYER 1 --- */
@@ -702,7 +712,7 @@
                     
                     <div class="top-nav">
                         <div class="nav-box-left"><div class="preloader-uiverse"><div class="crack"></div><div class="crack crack2"></div><div class="crack crack3"></div><div class="crack crack4"></div><div class="crack crack5"></div></div></div>
-                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent">000</span>%</div><div class="hamburger-menu"><span></span><span></span></div></div>
+                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent">000</span>%</div><button class="hamburger-menu" aria-label="Toggle menu"><span></span><span></span></button></div>
                     </div>
 
                     <div id="pageLayer1">
@@ -750,7 +760,7 @@
                             </div>
                             
                             <div class="stacked-carousel-container">
-                                <div class="stacked-carousel" id="carousel">
+                                <div class="stacked-carousel" id="carousel" tabindex="0" aria-label="Portfolio gallery. Use arrow keys to navigate.">
                                     <img src="red.png" alt="Slide 1" class="slide-item">
                                     <img src="blue.png" alt="Slide 2" class="slide-item">
                                     <img src="green.png" alt="Slide 3" class="slide-item">
@@ -819,7 +829,7 @@
         </div>
 
         <div class="loader-wrapper" id="loaderWrap"><div class="loader"><div class="box1"></div><div class="box2"></div><div class="box3"></div></div></div>
-        <div class="loading-text-container" id="percentContainer"><div class="loading-text-small" id="loadPercent">0%</div></div>
+        <div class="loading-text-container" id="percentContainer"><div class="loading-text-small" id="loadPercent" role="status" aria-live="polite">0%</div></div>
     </div>
 
     <script>
@@ -923,11 +933,11 @@
                                     initCarousel();
                                 }, 800);
                             }, 800);
-                        }, 2500); // 2.5 seconds to appreciate the typography before fade out
+                        }, 3500); // 3.5 seconds to appreciate the typography before fade out
                     } else {
                         val++; loadText.innerText = val + '%';
                     }
-                }, 20); 
+                }, 40);
             }, 1000); 
 
             const pageScrollPercentText = document.getElementById('pageScrollPercent');
@@ -1010,6 +1020,10 @@
                 carousel.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
                 carousel.addEventListener('mouseup', (e) => { if(!isDragging) return; isDragging = false; handleSwipe(startX, e.clientX); });
                 carousel.addEventListener('mouseleave', () => { isDragging = false; });
+                carousel.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
+                    else if (e.key === 'ArrowRight') { currentSlide = (currentSlide + 1) % slides.length; updateCarousel(); }
+                });
                 slides.forEach((slide, i) => { slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } }); });
             }
         };
