@@ -1,0 +1,52 @@
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 02:34:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /background.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:34:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /red.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:34:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /orang.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:34:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /profile1.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:34:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /green.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:34:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:34:59] "GET /blue.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /orang.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /background.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /red.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /blue.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /green.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:35:39] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:35:39] "GET /profile1.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /background.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /orang.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /red.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /blue.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /green.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:12] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:12] "GET /profile1.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /background.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /orang.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /red.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /green.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /profile1.png HTTP/1.1" 404 -
+127.0.0.1 - - [17/Mar/2026 02:36:59] code 404, message File not found
+127.0.0.1 - - [17/Mar/2026 02:36:59] "GET /blue.png HTTP/1.1" 404 -
