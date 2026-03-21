@@ -429,6 +429,11 @@
             flex-shrink: 0; display: flex; align-items: flex-end; justify-content: center;
             overflow: hidden;
         }
+        .stacked-carousel-container:focus-visible {
+            outline: 3px solid #31a8ff !important;
+            outline-offset: -3px;
+            border-radius: clamp(12px, 3vw, 18px);
+        }
         .stacked-carousel-container::before {
             content: ''; position: absolute; top: 0; left: 0; bottom: 0;
             width: clamp(30px, 8vw, 50px);
@@ -749,7 +754,7 @@
                                 </div>
                             </div>
                             
-                            <div class="stacked-carousel-container">
+                            <div class="stacked-carousel-container" tabindex="0" role="region" aria-label="Project showcase carousel">
                                 <div class="stacked-carousel" id="carousel">
                                     <img src="red.png" alt="Slide 1" class="slide-item">
                                     <img src="blue.png" alt="Slide 2" class="slide-item">
@@ -964,6 +969,7 @@
 
             function initCarousel() {
                 const carousel = document.getElementById('carousel');
+                const carouselContainer = carousel.closest('.stacked-carousel-container');
                 const slides = document.querySelectorAll('.slide-item');
                 const titleLine1 = document.getElementById('scrambleLine1');
                 const titleLine2 = document.getElementById('scrambleLine2');
@@ -1011,6 +1017,18 @@
                 carousel.addEventListener('mouseup', (e) => { if(!isDragging) return; isDragging = false; handleSwipe(startX, e.clientX); });
                 carousel.addEventListener('mouseleave', () => { isDragging = false; });
                 slides.forEach((slide, i) => { slide.addEventListener('click', () => { if(isDragging) return; if(currentSlide !== i) { currentSlide = i; updateCarousel(); } }); });
+
+                carouselContainer.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        updateCarousel();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        updateCarousel();
+                    }
+                });
             }
         };
     </script>
