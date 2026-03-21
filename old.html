@@ -457,6 +457,7 @@
             z-index: 15;
         }
         .stacked-carousel { position: relative; width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+        .stacked-carousel:focus-visible { outline: 2px solid #fff; border-radius: clamp(12px, 3vw, 18px); }
 
         /* Slide: tinggi absolut svh bukan persen container */
         .slide-item {
@@ -714,7 +715,7 @@
 
                     <div class="top-nav">
                         <div class="nav-box-left"><div class="preloader-uiverse"><div class="crack"></div><div class="crack crack2"></div><div class="crack crack3"></div><div class="crack crack4"></div><div class="crack crack5"></div></div></div>
-                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent">000</span>%</div><div class="hamburger-menu"><span></span><span></span></div></div>
+                        <div class="nav-box-right"><div class="my-world-txt">FLABSWORLD</div><div class="scroll-percent-box"><span id="pageScrollPercent">000</span>%</div><div class="hamburger-menu" role="button" tabindex="0" aria-label="Toggle menu"><span></span><span></span></div></div>
                     </div>
 
                     <div id="pageLayer1">
@@ -762,7 +763,7 @@
                             </div>
 
                             <div class="stacked-carousel-container">
-                                <div class="stacked-carousel" id="carousel">
+                                <div class="stacked-carousel" id="carousel" tabindex="0" role="region" aria-label="Image carousel">
                                     <img src="red.png" alt="Slide 1" class="slide-item">
                                     <img src="blue.png" alt="Slide 2" class="slide-item">
                                     <img src="green.png" alt="Slide 3" class="slide-item">
@@ -911,6 +912,18 @@
             splitTextIntoWords();
             prepareWordAnimation();
 
+            // Add keyboard support for hamburger menu
+            const hamburger = document.querySelector('.hamburger-menu');
+            if(hamburger) {
+                hamburger.addEventListener('keydown', (e) => {
+                    if(e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        // Trigger click event when enter/space is pressed
+                        hamburger.click();
+                    }
+                });
+            }
+
             const loadText = document.getElementById('loadPercent');
             let val = 0;
             const elementsToBlur =[document.getElementById('decoLeft'), document.getElementById('crossBar'), document.getElementById('loaderWrap'), document.getElementById('percentContainer'), document.getElementById('cardContent'), document.getElementById('vignette'), document.getElementById('backdrop')];
@@ -1012,6 +1025,18 @@
                     if (diff > 40) { currentSlide = (currentSlide + 1) % slides.length; updateCarousel(); }
                     else if (diff < -40) { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
                 }
+
+                carousel.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        updateCarousel();
+                    } else if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        updateCarousel();
+                    }
+                });
 
                 carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
                 carousel.addEventListener('touchend', (e) => { handleSwipe(startX, e.changedTouches[0].clientX); });
