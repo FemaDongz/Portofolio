@@ -1,0 +1,4 @@
+## 2024-05-18 - Keyboard Navigation in Custom Swipe UI
+**Learning:** Custom swipe-based carousels (built purely with `mousedown`/`touchstart` and `transform`) completely exclude keyboard and screen reader users, despite being visually interactive. Because they don't use native `<button>` or `<input>` elements, they inherently lack focusability (`tabindex`), semantic meaning (`role`), and event triggers for standard keyboard interactions (Space/Enter or Arrows).
+
+**Action:** Whenever implementing or encountering a custom interactive container (like a swipe box or custom dropdown), always verify that `tabindex="0"`, an appropriate ARIA `role`, and `keydown` event listeners (preventing default scrolling behavior for Arrow keys) are explicitly defined.
