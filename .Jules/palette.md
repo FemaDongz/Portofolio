@@ -1,0 +1,3 @@
+## 2024-05-18 - Keyboard Accessibility for Custom Swipe Widgets
+**Learning:** Custom interactive widgets (like swipe carousels) built with non-semantic elements (e.g., `<div>`) require manual assignment of `tabindex="0"`, appropriate `role`s, and `keydown` event listeners for directional navigation (with `e.preventDefault()` to stop page scrolling) to be accessible to keyboard and screen reader users. Without these additions, they are entirely bypassed during navigation.
+**Action:** When creating or auditing custom widgets relying on mouse/touch events, explicitly define their accessibility semantics and map keyboard actions to their respective update functions.
