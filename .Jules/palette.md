@@ -1,0 +1,3 @@
+## 2024-06-18 - Keyboard Accessibility for Carousels
+**Learning:** Custom interactive widgets in this application (like swipe carousels) rely solely on mouse/touch events and lack keyboard navigation (e.g., Arrow keys) and semantic ARIA roles.
+**Action:** When adding keyboard navigation to custom interactive widgets like carousels, always include `tabindex`, semantic roles (`role="region"`, `aria-roledescription="carousel"`), a `keydown` listener for directional keys, and include `e.preventDefault()` within the listener to prevent the browser's default page scrolling behavior. Focus styling is crucial and should follow existing outline patterns (`outline: 3px solid #e63946; outline-offset: -3px;`).
