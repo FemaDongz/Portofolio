@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom Widget Keyboard Accessibility
+**Learning:** Custom interactive widgets (like swipe carousels) don't have built-in keyboard navigation support and often rely solely on mouse/touch events. They need manual addition of `tabindex`, roles, and `keydown` event listeners for true accessibility.
+**Action:** When working on custom interactive widgets, explicitly add `tabindex="0"`, semantic `role`s, and `keydown` event listeners for standard navigation keys (like `ArrowRight`/`ArrowLeft` to increment/decrement state), and ensure `e.preventDefault()` is used to prevent default browser scrolling behavior.
