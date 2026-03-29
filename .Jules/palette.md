@@ -1,0 +1,3 @@
+## 2026-03-29 - Interactive Carousel Keyboard Accessibility
+**Learning:** Custom interactive widgets in this app (like the stacked swipe carousel) lack native keyboard accessibility and semantic roles. Because they rely heavily on touch/mouse events, keyboard users cannot navigate slides.
+**Action:** Always add `tabindex="0"` and appropriate ARIA roles (`role="region"` and `role="button"`) to custom interactive widgets and their selectable children. Manually attach `keydown` listeners for directional keys (ArrowLeft/ArrowRight) on the container and selection keys (Enter/Space) on the items, using `e.preventDefault()` to prevent page scrolling.
