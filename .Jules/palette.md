@@ -1,0 +1,3 @@
+## 2025-05-14 - [Carousel Keyboard Navigation & Focus]
+**Learning:** Interactive carousels must explicitly support keyboard navigation (ArrowLeft/ArrowRight) and have a visible focus state. To prevent the focus indicator from being obscured by decorative gradient overlays (z-index: 15), the focus-visible state should use a higher z-index (z-index: 20) and a negative outline-offset to stay within containers using overflow: hidden.
+**Action:** Always add tabindex="0", role="region", and aria-label to carousel containers. Implement keydown listeners with e.preventDefault() for arrow keys. Use z-index: 20 and outline-offset: -3px for focus indicators on layered UIs.
