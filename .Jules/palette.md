@@ -1,0 +1,3 @@
+## 2024-05-24 - Custom interactive swipe widgets lack keyboard navigation
+**Learning:** Custom interactive widgets (like swipe carousels) in this application rely purely on pointer/mouse events. They miss key accessibility bindings such as `keydown` directional controls. Setting standard elements like `div` requires `tabindex` and semantic ARIA roles (`region` or `group` with `aria-roledescription="carousel"`).
+**Action:** When working on custom interactive widgets that have pointer interactions (drag, swipe), proactively ensure that `tabindex="0"`, a focus-visible outline (using inset `outline-offset: -3px;`), `keydown` event handling, and correct ARIA roles are included for keyboard accessibility.
