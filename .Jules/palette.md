@@ -1,0 +1,3 @@
+## 2025-04-02 - Custom Widget Keyboard Accessibility
+**Learning:** Custom interactive widgets (like swipe carousels and custom menu buttons) frequently lack native semantic roles and keyboard bindings in this repository, which breaks accessibility for non-mouse users.
+**Action:** When adding or auditing custom widgets, ensure manual implementation of `tabindex="0"`, appropriate ARIA roles (`role="button"`, `role="region"`), clear visual `:focus-visible` styling, and comprehensive keyboard event mapping (e.g., mapping `Arrow` keys on the parent container, and manual `.click()` triggering for `Enter` and `Space` on individual child items).
