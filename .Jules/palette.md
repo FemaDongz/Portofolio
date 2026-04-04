@@ -1,0 +1,3 @@
+## 2025-04-04 - Standard Keyboard Interactions for Custom Carousels
+**Learning:** Custom interactive widgets (like swipe carousels) frequently rely solely on mouse/touch events and lack native keyboard navigation. Adding basic tabability and `keydown` listeners for Arrow keys provides huge accessibility wins but requires manually applying an outline that respects the nested element geometry (often via `outline-offset` tricks) and preventing default scroll behaviors.
+**Action:** Always add `tabindex="0"`, standard ARIA roles, visual focus indicators with correct offsets, and `e.preventDefault()` on directional keys for non-semantic custom swipe widgets to ensure robust keyboard accessibility.
