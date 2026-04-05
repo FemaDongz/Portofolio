@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessibility & Keyboard Navigation]
+**Learning:** In terminal-inspired or dark-themed UIs, focus indicators are often omitted to maintain a "clean" aesthetic, but this completely blocks keyboard-only users. Additionally, using `div` for interactive elements like the hamburger menu prevents them from being in the tab order.
+**Action:** Always implement `:focus-visible` with high-contrast outlines (e.g., #31a8ff) and convert interactive `div` elements to semantic `<button>` tags with CSS resets (`background: none`, `border: none`) to preserve the design while enabling accessibility.
