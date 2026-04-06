@@ -14,6 +14,12 @@
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         html { scroll-behavior: smooth; }
 
+        a:focus-visible, button:focus-visible, [role="button"]:focus-visible, [tabindex="0"]:focus-visible {
+            outline: 3px solid #e63946;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
         /* BODY PUTIH */
         body {
             background-color: #ffffff; 
@@ -1313,7 +1319,7 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Toggle Menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1351,10 +1357,10 @@
                             <div style="color:#fff; font-size:0.7rem; text-align:center; opacity:0.8; text-shadow:0 1px 2px black;">GUIDE TO EXIT TO UNLOCK</div>
                             <div class="maze-grid" id="mazeGrid"></div>
                             <div class="game-controls">
-                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)">▲</button>
-                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)">◀</button>
-                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)">▼</button>
-                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)">▶</button>
+                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)" aria-label="Move Up">▲</button>
+                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)" aria-label="Move Left">◀</button>
+                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)" aria-label="Move Down">▼</button>
+                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)" aria-label="Move Right">▶</button>
                             </div>
                         </div>
                     </div>
@@ -1368,9 +1374,9 @@
                                     <img src="profile.png" alt="Profile">
                                 </div>
                                 <div class="nav-control-box">
-                                    <button class="nav-btn" id="prevSlide">&lt;</button>
+                                    <button class="nav-btn" id="prevSlide" aria-label="Previous Slide">&lt;</button>
                                     <span class="nav-title">ABOUT ME</span>
-                                    <button class="nav-btn" id="nextSlide">&gt;</button>
+                                    <button class="nav-btn" id="nextSlide" aria-label="Next Slide">&gt;</button>
                                 </div>
                             </div>
                             <div class="about-content-area">
@@ -1461,9 +1467,9 @@
                 <div class="skills-main-layout">
                     <div class="skills-left-col">
                         <div class="skills-header-inner">
-                            <button class="skill-nav-btn" id="skillPrevBtn">&lt;</button>
+                            <button class="skill-nav-btn" id="skillPrevBtn" aria-label="Previous Skill Category">&lt;</button>
                             <div class="skill-title-box" id="skillTitle">FRONTEND</div>
-                            <button class="skill-nav-btn" id="skillNextBtn">&gt;</button>
+                            <button class="skill-nav-btn" id="skillNextBtn" aria-label="Next Skill Category">&gt;</button>
                         </div>
                         
                         <div class="graph-area">
@@ -1586,9 +1592,9 @@
                 </div>
 
                 <div class="book-controls-container">
-                    <button class="bk-nav-btn" id="bkPrevBtn">&lt;</button>
+                    <button class="bk-nav-btn" id="bkPrevBtn" aria-label="Previous Project">&lt;</button>
                     <div class="pagination-track" id="bkPagination"></div>
-                    <button class="bk-nav-btn" id="bkNextBtn">&gt;</button>
+                    <button class="bk-nav-btn" id="bkNextBtn" aria-label="Next Project">&gt;</button>
                 </div>
             </div>
 
@@ -1818,6 +1824,12 @@
         const closeMenuBtn = document.getElementById('closeMenu');
         
         hamburgerBtn.addEventListener('click', () => menuOverlay.classList.add('active'));
+        hamburgerBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                menuOverlay.classList.add('active');
+            }
+        });
         function closeMenuFunc() { menuOverlay.classList.remove('active'); }
         closeMenuBtn.addEventListener('click', closeMenuFunc);
 
