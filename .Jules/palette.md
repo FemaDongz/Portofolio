@@ -1,0 +1,3 @@
+## 2025-04-06 - [Semantic Buttons & Focus Indicators]
+**Learning:** In creative portfolio sites with unique UI elements (like a hamburger menu made of spans or icon-only sliders), replacing `div` click handlers with semantic `<button>` elements and descriptive `aria-label` attributes significantly improves screen reader accessibility without altering the visual design. A global `*:focus-visible` style with a negative `outline-offset` ensures keyboard focus is always visible even in tight layouts or containers with `overflow: hidden`.
+**Action:** When auditing legacy-style HTML portfolios, prioritize converting `div` triggers to buttons and implementing a high-contrast focus state with `outline-offset` to prevent clipping.
