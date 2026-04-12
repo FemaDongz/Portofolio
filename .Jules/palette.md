@@ -1,0 +1,3 @@
+## 2025-05-14 - Global Keyboard Accessibility in Cyber Aesthetic UI
+**Learning:** In highly stylized 'cyber' or 'dark mode' interfaces, default focus indicators are often suppressed or invisible. Implementing a global `:focus-visible` rule with a high-contrast accent color (e.g., #31a8ff) and a negative `outline-offset` ensures keyboard navigation is usable without compromising the aesthetic for mouse users.
+**Action:** Always implement a high-visibility global `:focus-visible` style and ensure all interactive elements (even those with custom iconography) use semantic `<button>` tags with descriptive `aria-label` attributes.
