@@ -1,0 +1,3 @@
+## 2025-05-15 - [Semantic Accessibility and Focus Feedback]
+**Learning:** Portfolio-style sites often use non-semantic `div` elements for interactive controls (like hamburger menus or custom sliders) to avoid default browser styling, but this completely breaks keyboard navigation and screen reader support. Additionally, icon-only controls without labels are inaccessible.
+**Action:** Convert interactive `div` elements to semantic `<button>` tags with explicit CSS resets (`background: none; border: none; padding: 0;`). Always provide `aria-label` for icon-only controls and implement global `:focus-visible` styles using the brand's primary accent color to ensure a high-contrast focus indicator for keyboard users without affecting mouse users.
