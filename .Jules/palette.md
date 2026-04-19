@@ -1,0 +1,3 @@
+## 2025-05-14 - [A11y and Bug Fixes in Portfolio]
+**Learning:** In highly stylized, custom-built portfolios, interactive elements often use non-semantic `div` tags, which are invisible to screen readers and keyboard users. Additionally, global focus indicators are often missing, making keyboard navigation nearly impossible.
+**Action:** Always convert interactive `div` containers to semantic `<button>` elements with clear `aria-label` attributes. Implement a global `:focus-visible` style that uses a high-contrast outline (e.g., `#31a8ff`) to ensure accessibility without sacrificing the dark-mode aesthetic.
