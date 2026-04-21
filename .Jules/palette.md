@@ -1,0 +1,3 @@
+## 2024-05-24 - [Semantic Transitions and Focus Visibility]
+**Learning:** In dark-themed, "hacker-aesthetic" portfolios, interactive elements are often implemented as `div` or `span` tags to avoid default browser styling, which breaks keyboard navigation and screen reader support. Additionally, high-contrast focus indicators are frequently omitted, making the site inaccessible to keyboard users.
+**Action:** Always convert `onclick` `div` containers to semantic `<button>` elements with CSS resets and implement global `:focus-visible` styles with the project's accent color (e.g., `#31a8ff`) to ensure accessibility without compromising the aesthetic.
