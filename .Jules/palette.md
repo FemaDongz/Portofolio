@@ -1,0 +1,3 @@
+## 2024-04-22 - Icon-only buttons lacking ARIA context
+**Learning:** This app frequently uses icon-only custom navigation buttons (e.g., .nav-btn, .skill-nav-btn, .ctrl-btn) built entirely with ASCII or HTML entities instead of SVG/text. Screen readers often skip these entirely or announce them poorly ("less than", "black right-pointing triangle") because they lack explicit semantic meaning or ARIA labels.
+**Action:** When working on this application's custom components, explicitly verify that all non-text buttons or interactive elements using visual entity characters include clear, descriptive `aria-label` attributes to ensure they are properly identified by assistive technologies.
