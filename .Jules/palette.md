@@ -1,0 +1,3 @@
+## 2025-05-14 - [A11y] Semantic Buttons and Focus States
+**Learning:** Stylized dark-mode portfolios often use non-semantic `div` elements for interactive components like hamburger menus, which breaks keyboard and screen reader accessibility. Additionally, high-contrast focus indicators are frequently missing, making navigation difficult for power users.
+**Action:** Always audit for `div`-based click handlers and convert them to semantic `<button>` tags with CSS resets. Implement global `:focus-visible` styles using the theme's primary accent color (#31a8ff) with a negative `outline-offset` to ensure visibility on dark backgrounds without being clipped by parent containers.
