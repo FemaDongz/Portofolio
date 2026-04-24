@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Buttons and High-Contrast Focus Indicators
+**Learning:** In highly stylized "cyber/hacker" themes, interactive elements are often implemented as non-semantic `div`s with `onclick` handlers, which breaks keyboard navigation. Converting these to semantic `<button>` tags with `font-family: inherit` and explicit `:focus-visible` outlines ensures accessibility while maintaining the intended visual design.
+**Action:** Prioritize identifying non-semantic interactive elements and implementing brand-aligned focus indicators (e.g., using the `#31a8ff` accent color) to provide clear visual feedback for keyboard users without clashing with the dark-mode aesthetic.
