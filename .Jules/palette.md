@@ -1,0 +1,3 @@
+## 2025-05-15 - [Semantic Buttons and Focus States]
+**Learning:** In minimalist portfolios using custom interaction logic (like this Photoshop-inspired UI), converting non-semantic `div` elements with `onclick` handlers to `<button>` tags requires explicit CSS resets (`background: none; border: none; padding: 0; cursor: pointer; font-family: inherit;`) to avoid breaking the intended layout while gaining accessibility. Additionally, implementing `:focus-visible` ensures high-contrast indicators for keyboard users without adding clutter for mouse users.
+**Action:** When auditing static portfolios, prioritize converting icon-only `div` clickables to `<button>` with `aria-label` and a high-contrast focus outline (e.g., `#31a8ff`) for immediate a11y wins.
