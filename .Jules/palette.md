@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Interactive Elements
+**Learning:** Using non-semantic elements like `div` or `li` with `onclick` handlers for navigation and controls (hamburger menus, carousels, game controls) completely breaks keyboard accessibility as they are not in the default tab order.
+**Action:** Always convert interactive `div`/`li` elements to semantic `<button>` or `<a>` tags. Use `href="#"` for navigation links and `aria-label` for icon-only buttons to ensure they are focusable and understandable by assistive technologies. Implementation of global `:focus-visible` styles ensures these newly focusable elements are visually identifiable.
