@@ -1,0 +1,3 @@
+## 2025-05-15 - [A11y/UX in Styled Components]
+**Learning:** In highly stylized "hacker/cyber" aesthetics, semantic HTML is often sacrificed for layout control (e.g., using divs for buttons). This breaks keyboard navigation and screen reader support. Additionally, dynamic carousels that rely on scroll triggers may appear empty or incomplete to assistive tech if not explicitly initialized.
+**Action:** Always convert interactive divs to semantic `<button>` tags with CSS resets. Implement `:focus-visible` using the design system's accent color (e.g., `#31a8ff`) with a negative `outline-offset` to ensure visibility against dark backgrounds without layout shift. Ensure dynamic "Project Manual" sections have a full JavaScript initialization of their first entry on page load.
