@@ -1,0 +1,3 @@
+## 2024-05-24 - Non-Semantic Interactive Elements Pattern
+**Learning:** This application heavily relies on non-semantic HTML elements (such as `<div>` or `<a>`) for its primary interactive controls (e.g., the hamburger menu, carousel navigation buttons, and maze controls) styled as interactive elements. This custom UI pattern strips native accessibility features and keyboard support out-of-the-box.
+**Action:** When interacting with or creating new interactive components in this codebase, do not assume keyboard support exists. Always manually restore native button behaviors by adding `role="button"`, `tabindex="0"`, descriptive `aria-label`s, and binding explicit JavaScript `keydown` event listeners for the 'Enter' and 'Space' keys to trigger click actions.
