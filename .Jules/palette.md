@@ -1,0 +1,3 @@
+## 2025-05-14 - [Semantic Buttons and Focus States]
+**Learning:** In highly stylized portfolios, interactive elements are often implemented as `div` tags for styling ease, which breaks keyboard navigation and screen reader support. Converting these to semantic `<button>` elements with CSS resets and implementing a global `:focus-visible` rule provides a robust accessibility foundation without compromising the custom aesthetic.
+**Action:** Always audit for `onclick` handlers on non-interactive elements and convert them to `<button>`. Use `:focus-visible` with a high-contrast outline (using the primary accent color) and a negative `outline-offset` to ensure visibility even in containers with `overflow: hidden`.

@@ -14,6 +14,11 @@
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         html { scroll-behavior: smooth; }
 
+        :focus-visible {
+            outline: 3px solid #31a8ff !important;
+            outline-offset: -3px;
+        }
+
         /* BODY PUTIH */
         body {
             background-color: #ffffff; 
@@ -110,7 +115,17 @@
             border-radius: 10px; margin-bottom: 20px;
         }
         .logo { font-size: 0.9rem; font-weight: 700; color: #ffffff; letter-spacing: 1px; text-transform: uppercase; }
-        .hamburger { width: 24px; height: 16px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+        .hamburger {
+            width: 24px;
+            height: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
         .hamburger span { display: block; width: 100%; height: 1px; background-color: #ffffff; transition: 0.3s; }
         .hamburger span:nth-child(2) { width: 60%; margin-left: auto; }
         header:hover .hamburger span:nth-child(2) { width: 100%; }
@@ -1272,7 +1287,7 @@
         <div class="menu-overlay" id="menuOverlay">
             <div class="menu-header">
                 <div class="menu-title">[ SYSTEM MENU ]</div>
-                <button class="close-btn" id="closeMenu">CLOSE</button>
+                <button class="close-btn" id="closeMenu" aria-label="Close menu">CLOSE</button>
             </div>
             
             <div class="menu-content">
@@ -1313,11 +1328,11 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </header>
             
             <!-- SECTION 1: HERO -->
@@ -1351,10 +1366,10 @@
                             <div style="color:#fff; font-size:0.7rem; text-align:center; opacity:0.8; text-shadow:0 1px 2px black;">GUIDE TO EXIT TO UNLOCK</div>
                             <div class="maze-grid" id="mazeGrid"></div>
                             <div class="game-controls">
-                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)">▲</button>
-                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)">◀</button>
-                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)">▼</button>
-                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)">▶</button>
+                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)" aria-label="Move up">▲</button>
+                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)" aria-label="Move left">◀</button>
+                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)" aria-label="Move down">▼</button>
+                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)" aria-label="Move right">▶</button>
                             </div>
                         </div>
                     </div>
@@ -1368,9 +1383,9 @@
                                     <img src="profile.png" alt="Profile">
                                 </div>
                                 <div class="nav-control-box">
-                                    <button class="nav-btn" id="prevSlide">&lt;</button>
+                                    <button class="nav-btn" id="prevSlide" aria-label="Previous about slide">&lt;</button>
                                     <span class="nav-title">ABOUT ME</span>
-                                    <button class="nav-btn" id="nextSlide">&gt;</button>
+                                    <button class="nav-btn" id="nextSlide" aria-label="Next about slide">&gt;</button>
                                 </div>
                             </div>
                             <div class="about-content-area">
@@ -1461,9 +1476,9 @@
                 <div class="skills-main-layout">
                     <div class="skills-left-col">
                         <div class="skills-header-inner">
-                            <button class="skill-nav-btn" id="skillPrevBtn">&lt;</button>
+                            <button class="skill-nav-btn" id="skillPrevBtn" aria-label="Previous skills category">&lt;</button>
                             <div class="skill-title-box" id="skillTitle">FRONTEND</div>
-                            <button class="skill-nav-btn" id="skillNextBtn">&gt;</button>
+                            <button class="skill-nav-btn" id="skillNextBtn" aria-label="Next skills category">&gt;</button>
                         </div>
                         
                         <div class="graph-area">
@@ -1586,9 +1601,9 @@
                 </div>
 
                 <div class="book-controls-container">
-                    <button class="bk-nav-btn" id="bkPrevBtn">&lt;</button>
+                    <button class="bk-nav-btn" id="bkPrevBtn" aria-label="Previous project">&lt;</button>
                     <div class="pagination-track" id="bkPagination"></div>
-                    <button class="bk-nav-btn" id="bkNextBtn">&gt;</button>
+                    <button class="bk-nav-btn" id="bkNextBtn" aria-label="Next project">&gt;</button>
                 </div>
             </div>
 
