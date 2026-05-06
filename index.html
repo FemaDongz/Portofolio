@@ -114,6 +114,7 @@
         .hamburger span { display: block; width: 100%; height: 1px; background-color: #ffffff; transition: 0.3s; }
         .hamburger span:nth-child(2) { width: 60%; margin-left: auto; }
         header:hover .hamburger span:nth-child(2) { width: 100%; }
+        .hamburger:focus-visible { outline: 3px solid #e63946; outline-offset: 4px; border-radius: 2px; }
 
         /* MENU OVERLAY */
         .menu-overlay {
@@ -1313,7 +1314,7 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Open menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1818,6 +1819,12 @@
         const closeMenuBtn = document.getElementById('closeMenu');
         
         hamburgerBtn.addEventListener('click', () => menuOverlay.classList.add('active'));
+        hamburgerBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                menuOverlay.classList.add('active');
+            }
+        });
         function closeMenuFunc() { menuOverlay.classList.remove('active'); }
         closeMenuBtn.addEventListener('click', closeMenuFunc);
 
