@@ -1,0 +1,3 @@
+## 2025-05-15 - [Semantic Interactive Elements and ARIA Labels]
+**Learning:** Stylized portfolios often use non-semantic elements like `div` for interactive components (e.g., hamburger menus) to avoid default browser styling, which breaks keyboard navigation and screen reader accessibility. Additionally, icon-only buttons in "cyber/terminal" aesthetics frequently lack descriptive labels.
+**Action:** Always convert `div` with `onclick` handlers to semantic `<button>` elements with CSS resets and apply descriptive `aria-label` attributes to all icon-only controls. Implement global `:focus-visible` styles to ensure accessibility without affecting mouse users' visual experience.
