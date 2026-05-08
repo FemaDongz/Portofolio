@@ -1,0 +1,3 @@
+## 2025-05-15 - Focus Management in Dark-Mode Portfolios
+**Learning:** Using `opacity: 0` and `pointer-events: none` on overlay menus is insufficient for accessibility. Inactive menu items can still capture keyboard focus, causing the tab order to "jump" over the main navigation buttons (like the hamburger menu) on mobile viewports.
+**Action:** Always use `visibility: hidden` (or `display: none`) for inactive overlays to ensure their children are removed from the tab order. Additionally, ensure all navigation elements (even those with JS handlers) use semantic `<button>` tags or `<a>` tags with valid `href` attributes to maintain native focusability.
