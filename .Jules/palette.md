@@ -1,0 +1,3 @@
+## 2026-05-10 - Custom Interactive Elements Without Focus Indicators
+**Learning:** In custom-styled interfaces built with `div` or generic interactive elements (like custom carousels and buttons in `index.html`), visually hiding the default `:focus` or not implementing `:focus-visible` completely breaks keyboard navigation for screen reader users or keyboard-only users. They cannot see where they are on the screen.
+**Action:** Always add visual focus indicators (`:focus-visible` styles) for all interactive elements (buttons, links, custom interactive div elements) to ensure keyboard navigation is visible and usable. Use `outline` for high visibility.
