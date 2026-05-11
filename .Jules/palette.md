@@ -1,0 +1,3 @@
+## 2025-05-14 - [A11y] Semantic Buttons and Focus States
+**Learning:** In a dark-themed portfolio, interactive elements implemented as `div` tags with `onclick` handlers are inaccessible to keyboard and screen reader users. Converting these to semantic `<button>` tags with explicit CSS resets (`background: none; border: none; padding: 0; cursor: pointer;`) and `font-family: inherit` preserves the visual design while providing proper focusability.
+**Action:** Always audit for non-semantic interactive elements and convert them to `<button>` tags, and implement a global `:focus-visible` rule with a high-contrast outline (e.g., `#31a8ff`) and negative `outline-offset` to ensure visibility against dark backgrounds without layout shift.
