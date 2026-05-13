@@ -1,0 +1,3 @@
+## 2025-01-31 - Keyboard Accessibility for Non-Semantic Interactive Elements
+**Learning:** The application heavily utilizes non-semantic elements (like `<div>` and `<a>`) for essential interaction controls (such as the main system hamburger menu and carousel buttons). These lack implicit keyboard focus and activation out of the box, presenting a severe accessibility barrier.
+**Action:** Always verify keyboard accessibility on custom UI controls. When retrofitting non-semantic elements, it's not enough to add `tabindex` and `role`; an explicit JavaScript event listener for `keydown` (handling 'Enter' and 'Space' keys, with `preventDefault()` for 'Space' to stop page scrolling) is required to restore native button activation behavior.
