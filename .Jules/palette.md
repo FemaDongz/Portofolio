@@ -1,0 +1,3 @@
+## 2026-05-14 - Non-semantic Elements for Core Controls
+**Learning:** The application heavily relies on non-semantic HTML elements (like `<div>`) for core interactive controls such as the hamburger menu, lacking native keyboard accessibility and screen reader support. This is a recurring pattern in custom-styled interfaces.
+**Action:** When working with custom-styled interactive elements, always explicitly restore native button behaviors by adding `role="button"`, `tabindex="0"`, descriptive `aria-label`s, and attaching a `keydown` listener for 'Enter' and 'Space' to manually trigger the click event.
