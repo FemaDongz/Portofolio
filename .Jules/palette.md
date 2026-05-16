@@ -1,0 +1,3 @@
+## 2026-05-16 - [Accessibility: Converting non-semantic wrappers to buttons]
+**Learning:** In highly stylized "hacker" or "cyber" dark-mode portfolios, interactive elements are often implemented as `div` or `li` wrappers to avoid default browser styling. Converting these to semantic `<button>` tags requires a specific set of CSS resets (`background: none; border: none; padding: 0; cursor: pointer; font-family: inherit;`) and high-contrast `:focus-visible` indicators (e.g., `#31a8ff`) to maintain the aesthetic while enabling keyboard navigation and screen reader support.
+**Action:** Always audit `onclick` handlers on non-semantic elements and replace them with buttons using this reset pattern to improve accessibility without breaking the visual design.
