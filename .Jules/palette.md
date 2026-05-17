@@ -1,0 +1,3 @@
+## 2025-05-17 - Interactive `<div>` elements and icon-only buttons
+**Learning:** This codebase frequently uses generic `<div>` tags (like the hamburger menu) or text-only/icon-only controls (like `&lt;` or SVG icons in `<button>`s) for primary interaction. These custom UI patterns lack native semantic meaning and accessible names, breaking screen reader functionality and keyboard accessibility.
+**Action:** When working on this UI, ensure all icon-only buttons receive descriptive `aria-label` attributes. Furthermore, any non-button elements serving as interactive controls must be converted to act as buttons by adding `role="button"`, `tabindex="0"`, `aria-label` or `aria-labelledby`, and explicitly attaching a `keydown` listener to handle `Enter` and `Space` key presses.
