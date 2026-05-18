@@ -1,0 +1,3 @@
+## 2025-05-14 - High-contrast focus states for dark-mode portfolios
+**Learning:** In dark-themed, highly stylized interfaces (like cyber/hacker aesthetics), standard browser focus indicators are often invisible or clash with the design. Using a bright, distinct accent color (like #31a8ff) with a negative `outline-offset` ensures the focus state is visible even when containers have `overflow: hidden`.
+**Action:** Always implement a global `:focus-visible` rule with a high-contrast color and negative offset in dark-mode projects to ensure keyboard accessibility without breaking the visual layout.
