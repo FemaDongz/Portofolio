@@ -1,0 +1,3 @@
+## 2024-05-19 - Interactive non-button elements lack keyboard accessibility
+**Learning:** In custom-styled interfaces utilizing non-semantic HTML tags (like `<div class="hamburger">`) for interactive controls, visual styling is insufficient for accessibility. These elements are inaccessible to screen readers and keyboard users as they lack native focusability, semantic meaning, and keyboard event handling.
+**Action:** Always verify custom interactive controls have `role="button"`, `tabindex="0"`, descriptive `aria-label`s, and explicit `keydown` event listeners for 'Enter' and 'Space' to mimic native `<button>` behavior.
