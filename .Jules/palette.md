@@ -1,0 +1,3 @@
+## 2025-05-21 - High-contrast focus states for dark-mode portfolios
+**Learning:** In highly stylized dark-mode interfaces, standard browser focus indicators are often invisible or clash with the aesthetic. Implementing a global `:focus-visible` rule with a distinct accent color (like `#31a8ff`) and a negative `outline-offset` ensures accessibility remains functional without clipping into container boundaries or disrupting the layout.
+**Action:** Always implement a dedicated `:focus-visible` strategy in custom-styled themes to ensure keyboard navigation is both visible and aesthetically integrated.
