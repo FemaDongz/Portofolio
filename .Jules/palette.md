@@ -1,0 +1,3 @@
+## 2025-05-21 - Custom UI Elements and Keyboard Navigation
+**Learning:** In this custom UI setup lacking semantic HTML (using `<div>` for the hamburger menu and non-text elements for controls), standard `.nav-btn` and custom icons lack native screen-reader labeling. Furthermore, CSS global `:focus-visible` outlines need explicit positioning outside `@media` queries to ensure keyboard accessibility.
+**Action:** When implementing new custom interactive elements, always force semantic button parity by adding `role="button"`, `tabindex="0"`, `aria-label`, and custom `keydown` listeners (Space/Enter), alongside ensuring global focus indicators exist.
