@@ -1,0 +1,3 @@
+## 2023-05-23 - Focus States and ARIA on Custom Elements
+**Learning:** Custom interactive elements (e.g. `div` acting as buttons like `#hamburgerBtn`) frequently lack native keyboard semantics and `aria-label` attributes for screen readers, and rely heavily on visual cues alone. Additionally, relying solely on inline styles and non-semantic tags makes the `:focus-visible` ring unavailable by default.
+**Action:** Added `role="button"`, `tabindex="0"`, and manual `keydown` listeners to custom `div` buttons. Reintroduced a global `:focus-visible` CSS reset to ensure visual keyboard navigation support on all interactive elements.
