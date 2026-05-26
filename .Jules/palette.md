@@ -1,0 +1,3 @@
+## 2026-05-26 - Keyboard Navigation on Non-Semantic Elements
+**Learning:** Custom UI components like hamburger menus implemented using generic elements (e.g., `<div>`) lack native focus and keyboard interaction capabilities. Providing `role="button"` and `tabindex="0"` allows focus, but explicitly binding 'Enter' and 'Space' keydown events is required for full keyboard accessibility to mimic native `<button>` behavior.
+**Action:** When adding accessibility to non-semantic custom controls, ensure both the visual/ARIA properties and the JavaScript keyboard interactions (Enter/Space) are explicitly implemented.
