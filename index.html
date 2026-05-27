@@ -99,6 +99,34 @@
         .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 
+        /* ACCESSIBILITY: Skip to content */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #fff;
+            color: #000;
+            padding: 8px;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ACCESSIBILITY: Focus States */
+        *:focus-visible {
+            outline: 2px solid #31a8ff !important;
+            outline-offset: -2px;
+        }
+
+        button, a {
+            cursor: pointer;
+        }
+
         .scroll-container { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; position: relative; scroll-behavior: smooth; }
 
         /* HEADER */
@@ -1241,7 +1269,9 @@
 </head>
 <body>
 
-    <div class="main-frame">
+    <a href="#profile" class="skip-link">SKIP TO CONTENT</a>
+
+    <div class="main-frame" id="top">
         
         <!-- SPLASH SCREEN -->
         <div class="splash-screen" id="splashScreen">
@@ -1272,7 +1302,7 @@
         <div class="menu-overlay" id="menuOverlay">
             <div class="menu-header">
                 <div class="menu-title">[ SYSTEM MENU ]</div>
-                <button class="close-btn" id="closeMenu">CLOSE</button>
+                <button class="close-btn" id="closeMenu" aria-label="Close menu">CLOSE</button>
             </div>
             
             <div class="menu-content">
@@ -1313,11 +1343,11 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </header>
             
             <!-- SECTION 1: HERO -->
@@ -1351,10 +1381,10 @@
                             <div style="color:#fff; font-size:0.7rem; text-align:center; opacity:0.8; text-shadow:0 1px 2px black;">GUIDE TO EXIT TO UNLOCK</div>
                             <div class="maze-grid" id="mazeGrid"></div>
                             <div class="game-controls">
-                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)">▲</button>
-                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)">◀</button>
-                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)">▼</button>
-                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)">▶</button>
+                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)" aria-label="Move up">▲</button>
+                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)" aria-label="Move left">◀</button>
+                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)" aria-label="Move down">▼</button>
+                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)" aria-label="Move right">▶</button>
                             </div>
                         </div>
                     </div>
@@ -1586,9 +1616,9 @@
                 </div>
 
                 <div class="book-controls-container">
-                    <button class="bk-nav-btn" id="bkPrevBtn">&lt;</button>
+                    <button class="bk-nav-btn" id="bkPrevBtn" aria-label="Previous project">&lt;</button>
                     <div class="pagination-track" id="bkPagination"></div>
-                    <button class="bk-nav-btn" id="bkNextBtn">&gt;</button>
+                    <button class="bk-nav-btn" id="bkNextBtn" aria-label="Next project">&gt;</button>
                 </div>
             </div>
 
@@ -2120,7 +2150,12 @@
         const initData = bookData[0];
         bkIconBox.innerHTML = initData.icon;
         bkNum.innerText = initData.id;
-        bkTitle.innerText = initData
+        bkTitle.innerText = initData.title;
+        bkCat.innerText = initData.cat;
+        bkDesc.innerText = initData.desc;
+        bkYear.innerText = initData.year;
+        bkRole.innerText = initData.role;
+        bkStatus.innerText = initData.status;
         // ── DESKTOP: Stagger service cards on reveal ──
         if (window.innerWidth >= 769) {
             const serviceCards = document.querySelectorAll('.service-card');

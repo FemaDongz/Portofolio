@@ -1,0 +1,3 @@
+## 2025-03-24 - [Initialization Consistency & Focus Visibility]
+**Learning:** In highly customized dark-mode portfolios, global focus indicators (like `*:focus-visible`) are often omitted or obscured by dark backgrounds. Additionally, dynamic UI sections (e.g., a "Project Manual" or carousel) frequently lack full initialization logic for the first item, leading to "empty" states or `[object Object]` rendering errors on initial load.
+**Action:** Always verify that dynamic content is fully initialized using the same logic as the "next/prev" transitions, and implement a high-contrast, non-clipping `:focus-visible` style (using negative `outline-offset`) to ensure accessibility in dark-themed designs.
