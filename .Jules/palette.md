@@ -1,0 +1,3 @@
+## 2025-05-15 - High-contrast focus states for dark-mode portfolios
+**Learning:** In dark-themed, highly stylized portfolios, default browser focus rings are often invisible or clash with the aesthetic. Implementing a global `:focus-visible` rule with a distinct accent color (e.g., `#31a8ff`) and a negative `outline-offset` ensures keyboard navigation visibility without container clipping (common in layouts using `overflow: hidden`).
+**Action:** Apply a consistent, high-contrast `:focus-visible` outline to all interactive elements (`a`, `button`, etc.) and use `outline-offset: -2px` to keep indicators within component boundaries.
