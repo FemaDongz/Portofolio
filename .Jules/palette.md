@@ -1,0 +1,3 @@
+## 2026-05-31 - Missing Accessibility Attributes on Custom Interactive Controls
+**Learning:** This app frequently relies on `<div>` elements (like `#hamburgerBtn`) and icon-only buttons (like `.nav-btn`, `.ctrl-btn`, etc.) without providing native `role="button"`, `tabindex="0"`, or screen reader-friendly `aria-label` text. This makes the interface extremely difficult or impossible to navigate for users relying on keyboard navigation and screen readers.
+**Action:** When implementing custom UI components (especially interactive or navigational elements), ensure that keyboard users can tab to the control and use 'Enter'/'Space' to trigger it, and that screen readers have a meaningful, text-based label to describe its function via `aria-label`.
