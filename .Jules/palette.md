@@ -1,0 +1,3 @@
+## 2026-06-01 - [Semantic Buttons and Focus Visibility in Dark-Mode Portfolios]
+**Learning:** Using non-semantic `div` elements for navigation (like hamburger menus) breaks keyboard accessibility as they aren't focusable by default. Additionally, dark-themed portfolios often lack visible focus indicators. Implementing a global `:focus-visible` style with a high-contrast color and a negative `outline-offset` ensures the focus state is visible even when containers have `overflow: hidden`.
+**Action:** Always convert interactive `div` elements to semantic `<button>` tags with CSS resets and add descriptive `aria-label` attributes for screen readers. Apply a global `:focus-visible` outline to all interactive elements to guarantee keyboard navigability.
