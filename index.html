@@ -1237,6 +1237,12 @@
             .project-item { transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
 
         } /* end @media (min-width: 769px) */
+
+        /* Global Keyboard Accessibility */
+        *:focus-visible {
+            outline: 3px solid #e63946 !important;
+            outline-offset: 4px !important;
+        }
     </style>
 </head>
 <body>
@@ -1289,11 +1295,11 @@
             </div>
 
             <div class="menu-footer">
-                <a href="#" class="clip-btn btn-github">
+                <a href="#" class="clip-btn btn-github" aria-label="GitHub Profile">
                     <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.419-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
                     GITHUB
                 </a>
-                <a href="#" class="clip-btn btn-discord">
+                <a href="#" class="clip-btn btn-discord" aria-label="Discord Profile">
                     <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Discord</title><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0857 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0857 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/></svg>
                     DISCORD
                 </a>
@@ -1313,7 +1319,7 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Open Navigation Menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1351,10 +1357,10 @@
                             <div style="color:#fff; font-size:0.7rem; text-align:center; opacity:0.8; text-shadow:0 1px 2px black;">GUIDE TO EXIT TO UNLOCK</div>
                             <div class="maze-grid" id="mazeGrid"></div>
                             <div class="game-controls">
-                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)">▲</button>
-                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)">◀</button>
-                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)">▼</button>
-                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)">▶</button>
+                                <button class="ctrl-btn ctrl-up" onclick="movePlayer(0, -1)" aria-label="Move Up">▲</button>
+                                <button class="ctrl-btn ctrl-left" onclick="movePlayer(-1, 0)" aria-label="Move Left">◀</button>
+                                <button class="ctrl-btn ctrl-down" onclick="movePlayer(0, 1)" aria-label="Move Down">▼</button>
+                                <button class="ctrl-btn ctrl-right" onclick="movePlayer(1, 0)" aria-label="Move Right">▶</button>
                             </div>
                         </div>
                     </div>
@@ -1368,9 +1374,9 @@
                                     <img src="profile.png" alt="Profile">
                                 </div>
                                 <div class="nav-control-box">
-                                    <button class="nav-btn" id="prevSlide">&lt;</button>
+                                    <button class="nav-btn" id="prevSlide" aria-label="Previous Slide">&lt;</button>
                                     <span class="nav-title">ABOUT ME</span>
-                                    <button class="nav-btn" id="nextSlide">&gt;</button>
+                                    <button class="nav-btn" id="nextSlide" aria-label="Next Slide">&gt;</button>
                                 </div>
                             </div>
                             <div class="about-content-area">
@@ -1461,9 +1467,9 @@
                 <div class="skills-main-layout">
                     <div class="skills-left-col">
                         <div class="skills-header-inner">
-                            <button class="skill-nav-btn" id="skillPrevBtn">&lt;</button>
+                            <button class="skill-nav-btn" id="skillPrevBtn" aria-label="Previous Skill">&lt;</button>
                             <div class="skill-title-box" id="skillTitle">FRONTEND</div>
-                            <button class="skill-nav-btn" id="skillNextBtn">&gt;</button>
+                            <button class="skill-nav-btn" id="skillNextBtn" aria-label="Next Skill">&gt;</button>
                         </div>
                         
                         <div class="graph-area">
@@ -1586,9 +1592,9 @@
                 </div>
 
                 <div class="book-controls-container">
-                    <button class="bk-nav-btn" id="bkPrevBtn">&lt;</button>
+                    <button class="bk-nav-btn" id="bkPrevBtn" aria-label="Previous Project">&lt;</button>
                     <div class="pagination-track" id="bkPagination"></div>
-                    <button class="bk-nav-btn" id="bkNextBtn">&gt;</button>
+                    <button class="bk-nav-btn" id="bkNextBtn" aria-label="Next Project">&gt;</button>
                 </div>
             </div>
 
@@ -1818,6 +1824,12 @@
         const closeMenuBtn = document.getElementById('closeMenu');
         
         hamburgerBtn.addEventListener('click', () => menuOverlay.classList.add('active'));
+        hamburgerBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hamburgerBtn.click();
+            }
+        });
         function closeMenuFunc() { menuOverlay.classList.remove('active'); }
         closeMenuBtn.addEventListener('click', closeMenuFunc);
 
