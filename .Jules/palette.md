@@ -1,0 +1,5 @@
+## 2025-05-14 - Semantic Interactive Elements and Initial Carousel State
+
+**Learning:** Interactive elements implemented as `div` tags lack keyboard accessibility and screen reader roles. Converting them to `<button>` tags provides these features natively but requires explicit CSS resets (background, border, font) to maintain visual consistency in highly stylized "dark-mode" or "terminal" themes. Additionally, JavaScript-driven UI components (like carousels) often have an "initialization gap" where the first item's data isn't correctly rendered on page load, leading to `[object Object]` or empty states if not explicitly initialized with the first data entry.
+
+**Action:** Always prefer `<button>` for click actions. Use a global `:focus-visible` style with a negative `outline-offset` to ensure focus indicators are visible but not clipped by containers with `overflow: hidden`. Verify that any data-driven UI component explicitly calls its update/render function for the first item on `DOMContentLoaded`.
