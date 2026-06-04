@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Buttons and Focus Visibility in Cyber-Aesthetic Portfolios
+**Learning:** Stylized "dark-mode" or "cyber" interfaces frequently use non-semantic elements (divs) for interactive components to avoid default browser styling, which breaks keyboard navigation and screen reader support. Explicitly using <button> with a CSS reset and high-contrast :focus-visible states preserves the aesthetic while ensuring accessibility.
+**Action:** When auditing stylized portfolios, identify onclick handlers on non-semantic tags and convert them to <button> elements with ARIA labels and custom focus indicators.
