@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessibility: Semantic Buttons & ARIA Labels]
+**Learning:** In highly stylized portfolios, interactive elements are often implemented as divs for ease of styling, which breaks screen reader and keyboard accessibility. Converting these to semantic <button> elements with CSS resets preserves the "hacker" aesthetic while providing essential accessibility hooks like aria-expanded and aria-label.
+**Action:** Audit for div/span/li elements with onclick handlers and convert them to <button> tags with 'background: none; border: none; padding: 0;' resets. Always add aria-label to buttons containing only icons or symbols.
