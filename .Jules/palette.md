@@ -1,0 +1,3 @@
+## 2026-06-05 - Add global :focus-visible for accessibility
+**Learning:** Adding a basic `*:focus-visible` style improves accessibility globally and seamlessly integrates keyboard navigation indicators. Custom icons missing labels (like hamburger menu, close, sliders) need `aria-label` attributes and semantic roles for screen readers, and focus outline adjustments should avoid disrupting the app's visual aesthetics by leveraging an inset or minimal outline where complex border radii exist.
+**Action:** Next time working on a UI with icon-only controls, check and add `*:focus-visible` globally, plus `aria-label` and `role=button` + `tabindex=0` (with a keydown listener for space/enter if not a native button element).
