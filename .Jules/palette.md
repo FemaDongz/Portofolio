@@ -1,0 +1,3 @@
+## 2025-05-22 - Improving Keyboard and Screen Reader Accessibility
+**Learning:** Stylized portfolios often use non-semantic elements (like divs) for interactive controls (like hamburger menus) and icon-only buttons (like arrows), which are invisible to screen readers and difficult to navigate via keyboard. Converting these to semantic buttons and adding descriptive ARIA labels, combined with high-contrast focus indicators, significantly improves accessibility without compromising the aesthetic.
+**Action:** Always audit for non-semantic interactive elements and icon-only buttons. Ensure they are semantic buttons and have descriptive `aria-label` attributes and visible focus states.
