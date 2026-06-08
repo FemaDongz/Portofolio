@@ -1,0 +1,3 @@
+## 2025-06-08 - Keyboard Interaction on Custom UI Elements
+**Learning:** The application's UI heavily relies on non-semantic HTML elements (like `<div>` or `<a>`) for primary interactive controls (e.g. Hamburger menu). Screen readers and keyboard users cannot interact with these without explicit semantic hints.
+**Action:** Always restore native button behaviors by adding `role="button"`, `tabindex="0"`, `aria-label`s, and attaching a `keydown` listener for 'Enter' and ' ' (Space) to manually trigger the click event on such custom elements.
