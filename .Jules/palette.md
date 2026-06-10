@@ -1,0 +1,3 @@
+## 2025-05-14 - [Mobile Navigation & Keyboard Accessibility]
+**Learning:** In highly stylized cyber/dark-themed portfolios, interactive elements often use non-semantic `div` tags for custom styling, which breaks keyboard navigation. Converting these to `<button>` with CSS resets (`background: none; border: none; padding: 0; cursor: pointer;`) maintains the visual design while restoring accessibility. Additionally, a "Skip to content" link is particularly valuable in apps with long (e.g., 10s) introductory splash screens.
+**Action:** Always audit the hamburger menu for semantic tag usage and ensure `aria-expanded` is synchronized with JavaScript state changes. Implement high-contrast `:focus-visible` styles early to catch focus-traps.
