@@ -13,6 +13,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         html { scroll-behavior: smooth; }
+        *:focus-visible { outline: 3px solid #e63946; outline-offset: 4px; }
 
         /* BODY PUTIH */
         body {
@@ -1313,7 +1314,7 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Open menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1818,6 +1819,12 @@
         const closeMenuBtn = document.getElementById('closeMenu');
         
         hamburgerBtn.addEventListener('click', () => menuOverlay.classList.add('active'));
+        hamburgerBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                menuOverlay.classList.add('active');
+            }
+        });
         function closeMenuFunc() { menuOverlay.classList.remove('active'); }
         closeMenuBtn.addEventListener('click', closeMenuFunc);
 
