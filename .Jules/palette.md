@@ -1,0 +1,3 @@
+## 2026-06-14 - [Semantic Elements in Custom Themes]
+**Learning:** Highly stylized "hacker" or "terminal" themes often rely on `div` elements for complex borders and hover effects, which inadvertently disables keyboard navigation and screen reader support. Converting these to semantic `<button>` tags with a CSS reset (`background: none; border: none; padding: 0;`) maintains the visual intent while ensuring accessibility.
+**Action:** Always audit stylized 'clickable' boxes to ensure they are semantic `<button>` tags and have clear `:focus-visible` indicators that contrast with dark/custom backgrounds.
