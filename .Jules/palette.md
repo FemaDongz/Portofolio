@@ -1,0 +1,3 @@
+## 2026-06-14 - Semantic Button Conversions for Legacy Portfolios
+**Learning:** Stylized portfolios often use non-semantic elements (div, li) for interactive components like hamburger menus to avoid default browser styling. Converting these to semantic <button> tags requires a CSS reset (border: none, background: none, font-family: inherit) and explicit type="button" to prevent side effects while enabling built-in keyboard accessibility.
+**Action:** Always audit for div/li with onclick handlers and replace with <button> tags combined with a global focus-visible style for high contrast navigation.
