@@ -1,0 +1,3 @@
+## 2026-06-14 - [Cyber-Aesthetic Accessibility & Init Fixes]
+**Learning:** In highly stylized 'dark-mode' or cyber-themed portfolios, standard focus indicators are often suppressed. Implementing a global high-contrast `:focus-visible` style with `outline-offset` ensures accessibility without compromising the aesthetic. Additionally, converting non-semantic `div` interactive elements to `<button>` tags with CSS resets (`background: none; border: none; padding: 0;`) is the most robust way to provide keyboard access while maintaining visual parity.
+**Action:** Always audit for `onclick` handlers on non-semantic tags and convert them to `button` elements with ARIA labels. Consolidate accessibility-focused CSS at the end of the main style block to ensure overrides.
