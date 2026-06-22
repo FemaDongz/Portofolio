@@ -1,0 +1,3 @@
+## 2026-06-14 - Cyber-Themed Focus States and Initialization Robustness
+**Learning:** In dark-themed or "cyber" interfaces, default browser focus indicators are often invisible. Implementing a high-contrast `:focus-visible` style (e.g., 2px white outline with offset) ensures accessibility without compromising aesthetics for mouse users. Additionally, when using JS to inject data from an array into the DOM, explicit initialization of all metadata fields for the first item prevents empty states or incorrect rendering (like `[object Object]`) on initial load.
+**Action:** Always include a global high-contrast `:focus-visible` style in dark themes and ensure comprehensive DOM initialization for data-driven carousels.
