@@ -1,0 +1,3 @@
+## 2026-06-14 - Cyber-Themed Focus States & Semantic Navigation
+**Learning:** In dark-themed, highly stylized portfolios, interactive elements are often implemented as `div`s with custom CSS, which breaks keyboard navigation. Using semantic `<button>` tags with a CSS reset (`background: none; border: none;`) combined with a global `*:focus-visible` rule using `outline-offset` ensures accessibility without compromising the aesthetic.
+**Action:** Always audit for `onclick` handlers on non-semantic elements and convert them to `<button>` tags, and implement a high-contrast focus indicator that clears the element's border.
