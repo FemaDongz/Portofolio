@@ -1,0 +1,3 @@
+## 2025-02-15 - Non-semantic Interactive Elements
+**Learning:** This application heavily relies on non-semantic HTML elements (like `<div>` for the hamburger menu and `<a>` without `href` for desktop navigation) for primary interactive controls, which completely breaks keyboard navigation and screen reader accessibility.
+**Action:** Always explicitly restore native button behaviors by adding `role="button"`, `tabindex="0"`, `aria-label`s, and attaching a `keydown` listener for 'Enter' and ' ' (Space) to manually trigger the click event when dealing with custom interactive elements in this codebase.
