@@ -1,0 +1,3 @@
+## 2026-06-24 - Semantic Buttons for Interactions
+**Learning:** This repository frequently uses non-semantic `div` elements with `onclick` handlers for critical navigation (like the hamburger menu) and interactive components. These elements are invisible to screen readers as interactive controls and cannot be reached via keyboard navigation (Tab) by default.
+**Action:** Always convert interactive `div` or `span` elements to semantic `<button>` tags. Apply a CSS reset (`background: none; border: none; padding: 0; cursor: pointer; font-family: inherit;`) to ensure the visual design remains unchanged while providing full accessibility and keyboard support.
