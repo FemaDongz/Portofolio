@@ -1313,7 +1313,7 @@
                     <a onclick="handleMenuClick(event,'experience')">EXPERIENCE</a>
                     <a onclick="handleMenuClick(event,'contact')">CONTACT</a>
                 </nav>
-                <div class="hamburger" id="hamburgerBtn">
+                <div class="hamburger" id="hamburgerBtn" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1817,8 +1817,17 @@
         const menuOverlay = document.getElementById('menuOverlay');
         const closeMenuBtn = document.getElementById('closeMenu');
         
-        hamburgerBtn.addEventListener('click', () => menuOverlay.classList.add('active'));
-        function closeMenuFunc() { menuOverlay.classList.remove('active'); }
+        hamburgerBtn.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+        });
+        hamburgerBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                hamburgerBtn.click();
+            }
+        });
+        function closeMenuFunc() { menuOverlay.classList.remove('active'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
         closeMenuBtn.addEventListener('click', closeMenuFunc);
 
         function handleMenuClick(e, targetId) {
